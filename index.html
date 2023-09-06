@@ -1,17 +1,8 @@
 <!DOCTYPE html>
 <html>
-<header>
-    <nav>
-        <ul>
-        <li><a href="#home">Home</a></li>
-        <li><a href="#blog">Blog</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#dataset">Open Dataset</a></li>
-        </ul>
-    </nav>
-    </header>
 <head>
     <title>Resume</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -25,6 +16,41 @@
             padding: 20px;
             background-color: #fff;
             box-shadow: 0 0 10px rgba(0,0,0,0.2);
+        }
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: #333;
+            color: #fff;
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        nav ul {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        nav li {
+            margin: 0 10px;
+        }
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: bold;
+            text-transform: uppercase;
+            padding: 10px;
+            transition: all 0.3s ease;
+        }
+        nav a:hover {
+            background-color: #fff;
+            color: #333;
         }
         h1 {
             font-size: 36px;
@@ -59,15 +85,26 @@
             border-radius: 5px;
             font-size: 14px;
         }
+        canvas {
+            display: block;
+            margin: 20px auto;
+            border: 1px solid #333;
+        }
     </style>
 </head>
 <body>
+    <header>
+        <h1>Jason Tsang</h1>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#blog">Blog</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#dataset">Open Dataset</a></li>
+            </ul>
+        </nav>
+    </header>
     <div class="container">
-        <header>
-            <h1>Jason Tsang</h1>
-            <p>The Chinese University of Hong Kong</p>
-            <p>Data Science and Policy Studies Student</p>
-        </header>
         <main>
             <section>
                 <h2>Description</h2>
@@ -76,8 +113,8 @@
              <section>
                 <h2>Certificates</h2>
                 <ul>
-                <li><a href="https://www.coursera.org/account/accomplishments/specialization/certificate/358DS99ACSMT">Mathematics for Machine Learning and Data Science Specialization</a></li>
-                <li><a href="https://www.coursera.org/account/accomplishments/certificate/Y8E585KE7NTZ">Blockchain Basics</a></li>
+                    <li><a href="https://www.coursera.org/account/accomplishments/specialization/certificate/358DS99ACSMT">Mathematics for Machine Learning and Data Science Specialization</a></li>
+                    <li><a href="https://www.coursera.org/account/accomplishments/certificate/Y8E585KE7NTZ">Blockchain Basics</a></li>
                 </ul>
             </section>
             <section>
@@ -90,7 +127,38 @@
                     <div class="skill">Linux</div>
                 </div>
             </section>
+            <canvas id="donut"></canvas>
         </main>
     </div>
+    <script>
+        const canvas = document.getElementById('donut');
+        const ctx = canvas.getContext('2d');
+        const screen_width = window.innerWidth;
+        const screen_height = window.innerHeight;
+        const radius = 100;
+        const thickness = 20;
+        const speed = 0.05;
+        const color = '#333';
+
+        canvas.width = screen_width;
+        canvas.height = screen_height;
+
+        function draw() {
+            ctx.clearRect(0, 0, screen_width, screen_height);
+            ctx.beginPath();
+            ctx.arc(screen_width / 2, screen_height / 2, radius, 0, Math.PI * 2);
+            ctx.lineWidth = thickness;
+            ctx.strokeStyle = color;
+            ctx.stroke();
+            ctx.beginPath();
+            ctx.arc(screen_width / 2, screen_height / 2, radius, -Math.PI / 2, -Math.PI / 2 + speed * Math.PI * 2);
+            ctx.lineWidth = thickness;
+            ctx.strokeStyle = '#fff';
+            ctx.stroke();
+            requestAnimationFrame(draw);
+        }
+
+        draw();
+    </script>
 </body>
 </html>
