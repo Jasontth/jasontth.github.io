@@ -16,6 +16,16 @@
             padding: 20px;
             background-color: #fff;
             box-shadow: 0 0 10px rgba(0,0,0,0.2);
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+        }
+        .photo {
+            flex: 1;
+            margin-right: 20px;
+        }
+        .description {
+            flex: 2;
         }
         header {
             display: flex;
@@ -105,12 +115,15 @@
         </nav>
     </header>
     <div class="container">
+        <img class="photo" src="path/to/your/image.jpg" alt="Your Name">
+        <div class="description">
+            <h2>Description</h2>
+            <p>Hi! I'm Jason, a technologist enthusiast with a passion for exploring and learning about various technologies 💻. I have extensive work experience in data science 📊, IoT 💡, and blockchain 🔒, and I'm always eager to stay up-to-date with the latest advancements in the field 🚀. I enjoy sharing my knowledge with others 🤓 and learning from their experiences. </p>
+        </div>
+    </div>
+    <div class="container">
         <main>
             <section>
-                <h2>Description</h2>
-                <p>Hi! I'm Jason, a technologist enthusiast with a passion for exploring and learning about various technologies 💻. I have extensive work experience in data science 📊, IoT 💡, and blockchain 🔒, and I'm always eager to stay up-to-date with the latest advancements in the field 🚀. I enjoy sharing my knowledge with others 🤓 and learning from their experiences. </p>
-            </section>
-             <section>
                 <h2>Certificates</h2>
                 <ul>
                     <li><a href="https://www.coursera.org/account/accomplishments/specialization/certificate/358DS99ACSMT">Mathematics for Machine Learning and Data Science Specialization</a></li>
