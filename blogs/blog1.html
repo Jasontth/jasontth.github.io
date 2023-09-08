@@ -9,11 +9,8 @@
   <link rel="icon" type="image/png" href="photos/book-icon.png">
   <style>
     pre {
-
         padding: 10px;
         font-size: 10px;
-        font-family: monospace;
-        white-space: pre-wrap;
         overflow-x: auto;
       }
   </style>
@@ -33,17 +30,21 @@
       <div>
         <div id="donut-container"></div>
         <pre id="d"></pre>
-        <button onclick="viewSource()">View Source Code</button>
+        <button onclick="toggleSourceCode()">View Source Code</button>
       </div>
       
       <script src="donut.js"></script>
       
       <script>
-        function viewSource() {
-          const source = document.createElement("pre");
-          source.textContent = document.querySelector('script[src="donut.js"]').textContent;
-          document.querySelector("#article div").appendChild(source);
+      function toggleSourceCode() {
+        const sourceCode = document.querySelector("#source-code");
+        if (sourceCode.style.display === "none") {
+          sourceCode.textContent = document.querySelector('script[src="donut.js"]').textContent;
+          sourceCode.style.display = "block";
+        } else {
+          sourceCode.style.display = "none";
         }
+      }
       </script>
     </body>
 
