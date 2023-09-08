@@ -10,7 +10,7 @@
   <style>
     pre {
         padding: 10px;
-        font-size: 10px;
+        font-size: 100%;
         overflow-x: auto;
       }
   </style>
@@ -30,27 +30,16 @@
       <div>
         <div id="donut-container"></div>
         <pre id="d"></pre>
-        <button onclick="toggleSourceCode()">View Source Code</button>
+        <button onclick="openSourceCode()">View Source Code</button>
       </div>
       
       <script src="donut.js"></script>
       
       <script>
-      function toggleSourceCode() {
-        const sourceCode = document.querySelector("#source-code");
-        if (sourceCode.style.display === "none") {
-          fetch("donut.js")
-            .then(response => response.text())
-            .then(data => {
-              sourceCode.textContent = data;
-              sourceCode.style.display = "block";
-            })
-            .catch(error => console.error(error));
-        } else {
-          sourceCode.style.display = "none";
+        function openSourceCode() {
+          window.open("donut.js");
         }
-      }
-      </script>
+        </script>
     </body>
 
         <body>
