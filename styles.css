@@ -201,3 +201,14 @@ body {
     max-width: 100px; /* Adjust the width as needed */
     max-height: 100px; /* Adjust the height as needed */
   }
+
+  .company-logo {
+    float: right;
+    max-width: 100px; /* Adjust the width as needed */
+    max-height: 100px; /* Adjust the height as needed */
+    margin-left: 10px;
+  }
+
+  .about-text {
+    font-size: 20px;
+  }
