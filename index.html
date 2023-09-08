@@ -10,12 +10,14 @@
         <!-- Header content here -->
     </header>
     <div class="container">
-        <img class="photo" src="icon.jpeg" alt="Icon">
-        <div class="description">
+        <section class="container" style="display: flex; justify-content: center; margin-top: 20px;">
+            <h2>Welcome to my website!!!</h2>
+        </section>
+        <div class="description" style="display: none;">
             <!-- Description content here -->
         </div>
         
-        <main>
+        <main style="display: none;">
             <section>
                 <h2>Certificates</h2>
                 <!-- Certificates content here -->
@@ -29,10 +31,20 @@
                 <script src="donut.js"></script>
                 <div style="margin-top: 20px; margin-bottom: 20px;"></div>
             </section>
-            <section class="container" style="display: flex; justify-content: center; margin-bottom: 20px;">
-                <h2>Welcome to my website!!!</h2>
-            </section>
         </main>
     </div>
+    
+    <script>
+        window.addEventListener('scroll', function() {
+            var description = document.querySelector('.description');
+            var main = document.querySelector('main');
+            if (window.scrollY > 100) {
+                description.style.display = 'block';
+            }
+            if (window.scrollY > 500) {
+                main.style.display = 'block';
+            }
+        });
+    </script>
 </body>
 </html>
