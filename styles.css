@@ -20,25 +20,52 @@ body {
     font-size: 24px;
   }
   
-  nav {
-    background-color: #444;
+  .main-nav, .blog-nav {
     padding: 10px;
   }
   
-  nav ul {
+  .main-nav {
+    background-color: #444;
+    color: #fff;
+  }
+  
+  .main-nav ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
     text-align: center;
   }
   
-  nav ul li {
+  .main-nav ul li {
     display: inline-block;
     margin: 0 10px;
   }
   
-  nav ul li a {
-    color: white;
+  .main-nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 18px;
+  }
+  
+  .blog-nav {
+    background-color: #75c1b8;
+    color: #333;
+  }
+  
+  .blog-nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+  }
+  
+  .blog-nav ul li {
+    display: inline-block;
+    margin: 0 10px;
+  }
+  
+  .blog-nav ul li a {
+    color: #333;
     text-decoration: none;
     font-size: 18px;
   }
