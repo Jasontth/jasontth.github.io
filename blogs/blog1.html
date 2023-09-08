@@ -39,8 +39,13 @@
       function toggleSourceCode() {
         const sourceCode = document.querySelector("#source-code");
         if (sourceCode.style.display === "none") {
-          sourceCode.textContent = document.querySelector('script[src="donut.js"]').textContent;
-          sourceCode.style.display = "block";
+          fetch("donut.js")
+            .then(response => response.text())
+            .then(data => {
+              sourceCode.textContent = data;
+              sourceCode.style.display = "block";
+            })
+            .catch(error => console.error(error));
         } else {
           sourceCode.style.display = "none";
         }
