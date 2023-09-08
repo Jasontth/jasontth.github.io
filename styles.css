@@ -248,3 +248,11 @@ body {
   .about-text {
     font-size: 20px;
   }
+
+  .main-nav a:hover {
+    color: #342929;
+  }
+  
+  .blog-nav a:hover {
+    color: #12383c;
+  }
