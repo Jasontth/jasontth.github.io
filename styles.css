@@ -135,6 +135,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding: 0px 100px;
   }
   
   .contact-form input,
