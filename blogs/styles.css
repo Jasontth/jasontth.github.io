@@ -22,7 +22,7 @@ header h2 {
 nav {
   background-color: #444;
   color: #fff;
-  padding: 10px 50px;
+  padding: 10px 5%;
   display: flex;
   justify-content: left;
 }
