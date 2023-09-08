@@ -4,6 +4,80 @@
     <title>Home</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 20px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav li {
+            margin: 0 10px;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: bold;
+            text-transform: uppercase;
+            padding: 10px;
+            transition: all 0.3s ease;
+        }
+
+        nav a:hover {
+            background-color: #fff;
+            color: #333;
+        }
+
+        .container {
+            width: fit-content;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0,0,0,0.2);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: calc(100% - 80px);
+        }
+
+        .center {
+            text-align: center;
+        }
+
+        .description,
+        main {
+            display: none;
+            margin-top: 20px;
+        }
+
+        h2 {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        p {
+            font-size: 14px;
+            line-height: 1.5;
+            margin-bottom: 10px;
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -17,19 +91,19 @@
         </nav>
     </header>
     <div class="container">
-        <section class="container" style="display: flex; justify-content: center; margin-top: 20px;">
-            <pre class="center" id="d"></pre>
+        <section class="center">
+            <pre id="d"></pre>
             <script src="donut.js"></script>
             <div style="margin-top: 20px; margin-bottom: 20px;"></div>
             <h2>Welcome to my website!!!</h2>
         </section>
-        <div class="description" style="display: none;">
+        <div class="description">
             <p>
                 I am a student ....
             </p>
         </div>
         
-        <main style="display: none;">
+        <main>
             <section>
                 <h2>Certificates</h2>
                 <!-- Certificates content here -->
@@ -41,6 +115,7 @@
             <section>
                 <h2>Projects</h2>
                 <!-- Projects content here -->
+            </section>
         </main>
     </div>
     
