@@ -212,3 +212,17 @@ body {
   .about-text {
     font-size: 20px;
   }
+
+  .nav-link {
+    color: #333;
+    text-decoration: none;
+  }
+  
+  .nav-link:hover {
+    background-color: #eee;
+  }
+  
+  .nav-link.active {
+    color: #fff;
+    background-color: #007bff;
+  }
