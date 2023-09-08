@@ -74,13 +74,13 @@ body {
     margin-bottom: 5px;
   }
   
-  .skills ul {
+  .projects ul {
     list-style-type: none;
     margin: 00;
     padding: 0;
   }
   
-  .skills ul li {
+  .projects ul li {
     display: inline-block;
     margin: 0 10px 10px 0;
     background-color: #ccc;
