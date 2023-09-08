@@ -1,136 +1,123 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-    <title>Home</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="styles.css">
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f2f2f2;
-            margin: 0;
-            padding: 0;
-            height: 100vh;
-        }
-
-        header {
-            background-color: #333;
-            color: #fff;
-            padding: 10px 20px;
-        }
-
-        nav ul {
-            display: flex;
-            list-style: none;
-            margin: 0;
-            padding: 0;
-        }
-
-        nav li {
-            margin: 0 10px;
-        }
-
-        nav a {
-            color: #fff;
-            text-decoration: none;
-            font-size: 16px;
-            font-weight: bold;
-            text-transform: uppercase;
-            padding: 10px;
-            transition: all 0.3s ease;
-        }
-
-        nav a:hover {
-            background-color: #fff;
-            color: #333;
-        }
-
-        .container {
-            width: fit-content;
-            margin: 0 auto;
-            padding: 20px;
-            background-color: #fff;
-            box-shadow: 0 0 10px rgba(0,0,0,0.2);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            height: calc(100% - 80px);
-            opacity: 0;
-            transform: translateY(50px);
-            transition: opacity 0.5s ease, transform 0.5s ease;
-        }
-
-        .container.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .center {
-            text-align: center;
-        }
-
-        .description,
-        main {
-            display: none;
-            margin-top: 20px;
-        }
-
-        h2 {
-            font-size: 20px;
-            margin-bottom: 10px;
-        }
-
-        p {
-            font-size: 14px;
-            line-height: 1.5;
-            margin-bottom: 10px;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Resume Website</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
     <header>
-        <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="blog.html">Blog</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
-    <div class="container">
-        <section>
-            <pre class="center" id="d"></pre>
-            <script src="donut.js"></script>
-            <p>Welcome to my website</p>
-        </section>
-        
-        <main>
-            <section>
-                <h2>About Me</h2>
-                <p>
-                    I am a student...
-                </p>
-            </section>
-            <section>
-                <h2>Certificates</h2>
-                <p>
-                    <!-- Certificates content here -->
-                </p>
-            </section>
-            <section>
-                <h2>Skills</h2>
-                <p>
-                    <!-- Skills content here -->
-                </p>
-            </section>
-            <section>
-                <h2>Projects</h2>
-                <p>
-                    <!-- Projects content here -->
-                </p>
-            </section>
-        </main>
+          <div class="header-text">
+            <h1>Jason Tsang</h1>
+            <h2>Data Scientist</h2>
+          </div>
+          <div class="social-icons">
+            <a href="https://www.linkedin.com/in/jason-tsangtszhin/" target="_blank" rel="noopener noreferrer">
+              <img src="linkedin.png" alt="LinkedIn">
+            </a>
+            <a href="https://github.com/Jasontth" target="_blank" rel="noopener noreferrer">
+              <img src="github.png" alt="GitHub">
+            </a>
+            <a href="https://www.kaggle.com/jasontth" target="_blank" rel="noopener noreferrer">
+              <img src="kaggle.png" alt="Kaggle">
+            </a>
+          </div>
+        </div>
+      </header>
+
+  <nav>
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <section id="about">
+    <h2>About Me</h2>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam efficitur ultrices mauris, sit amet blandit
+      turpis dignissim a.</p>
+  </section>
+
+  <section id="experience">
+    <h2>Experience</h2>
+    <div class="timeline">
+      <div class="timeline-item">
+        <h3>Job Position</h3>
+        <p>Company Name - Location</p>
+        <p>Date Range</p>
+        <p>Description of responsibilities and achievements.</p>
+      </div>
+      <div class="timeline-item">
+        <h3>Job Position</h3>
+        <p>Company Name - Location</p>
+        <p>Date Range</p>
+        <p>Description of responsibilities and achievements.</p>
+      </div>
     </div>
-        
+  </section>
+
+  <section id="education">
+    <h2>Education</h2>
+    <div class="timeline">
+      <div class="timeline-item">
+        <h3>Degree</h3>
+        <p>University Name - Location</p>
+        <p>Date Range</p>
+        <p>Description of coursework and achievements.</p>
+      </div>
+      <div class="timeline-item">
+        <h3>Degree</h3>
+        <p>University Name - Location</p>
+        <p>Date Range</p>
+        <p>Description of coursework and achievements.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <h2>Skills</h2>
+    <ul>
+      <li>Skill 1</li>
+      <li>Skill 2</li>
+      <li>Skill 3</li>
+      <li>Skill 4</li>
+    </ul>
+  </section>
+
+  <section id="contact">
+    <h2>Contact</h2>
+    <form action="mailto:jasontsangtszhin@gmail.com" method="post" enctype="text/plain">
+      <div class="form-group">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+      </div>
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+      </div>
+      <div class="form-group">
+        <label for="subject">Subject:</label>
+        <input type="text" id="subject" name="subject" required>
+      </div>
+      <div class="form-group">
+        <label for="message">Message:</label>
+        <textarea id="message" name="message" rows="6" required></textarea>
+      </div>
+      <button type="submit">Send</button>
+    </form>
+  </section>
+  
+  <footer>
+    <p>&copy; 2023 Your Name. All rights reserved.</p>
+  </footer>
+
+  <script src="script.js"></script>
 </body>
+
 </html>

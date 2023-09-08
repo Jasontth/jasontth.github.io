@@ -1,0 +1,161 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+  
+  header {
+    background-color: #333;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  header h1 {
+    color: white;
+    font-size: 36px;
+  }
+  
+  header h2 {
+    color: #ccc;
+    font-size: 24px;
+  }
+  
+  nav {
+    background-color: #444;
+    padding: 10px;
+  }
+  
+  nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+  }
+  
+  nav ul li {
+    display: inline-block;
+    margin: 0 10px;
+  }
+  
+  nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+  }
+  
+  section {
+    padding: 40px;
+  }
+  
+  section h2 {
+    color: #333;
+    font-size: 28px;
+    margin-bottom: 20px;
+  }
+  
+  .timeline {
+    position: relative;
+  }
+  
+  .timeline-item {
+    margin-bottom: 40px;
+    position: relative;
+  }
+  
+  .timeline-item h3 {
+    color: #333;
+    font-size: 20px;
+    margin-bottom: 5px;
+  }
+  
+  .timeline-item p {
+    color: #666;
+    font-size: 16px;
+    margin-bottom: 5px;
+  }
+  
+  .skills ul {
+    list-style-type: none;
+    margin: 00;
+    padding: 0;
+  }
+  
+  .skills ul li {
+    display: inline-block;
+    margin: 0 10px 10px 0;
+    background-color: #ccc;
+    padding: 10px;
+    border-radius: 5px;
+    color: #333;
+  }
+  
+  footer {
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    text-align: center;
+  }
+
+  header {
+    background-image: url("background.jpg");
+    background-size: cover;
+    background-position: center;
+    padding: 100px;
+    text-align: left;
+  }
+  
+  header h1, header h2 {
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  }
+
+  .social-icons {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+  }
+
+  .social-icons a:not(:last-child) {
+    margin-right: 10px; /* Adjust the margin as needed */
+  }
+  
+  .social-icons img {
+    max-width: 100px; /* Set the maximum width to 100% */
+    max-height: 30px; /* Set the maximum height to 100% */
+    margin: 0 px; /* Adjust the margin as needed */
+  }
+
+  #contact {
+    text-align: center;
+  }
+  
+  .form-group {
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  label {
+    margin-bottom: 5px;
+  }
+  
+  input, textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  button {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #45a049;
+  }
