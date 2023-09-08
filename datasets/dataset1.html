@@ -8,10 +8,23 @@
   <link rel="stylesheet" href="styles.css">
   <link rel="icon" type="image/png" href="photos/book-icon.png">
   <style>
-    pre {
-      font-size: 9px;
-      font-family: monospace;
-    }
+      button {
+        background-color: #4CAF50;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+
+      pre {
+        background-color: #f4f4f4;
+        border: 1px solid #ddd;
+        padding: 10px;
+        font-size: 14px;
+        font-family: monospace;
+        white-space: pre-wrap;
+      }
   </style>
 </head>
 
@@ -25,64 +38,48 @@
 
   <section id="article">
     <body>
-      <h2>Spinning Donut Code 🍩</h2>
+      <h2>CUHK Canteens 🍽️</h2>
+      <p>This dataset contains information about the canteens at the Chinese University of Hong Kong (CUHK). The data was scraped from the CUHK website using a Python script and saved to a CSV file. The dataset is provided for educational and research purposes, and can be used freely as long as proper attribution is given.</p>
       <div>
-        <div id="donut-container"></div>
-        <pre id="d"></pre>
-        <button onclick="viewSource()">View Source Code</button>
+        <h2>Source Code</h2>
+        <pre id="source-code">
+          <!-- The source code of cuhk_canteen.py will be loaded here -->
+        </pre>
       </div>
-      
-      <script src="donut.js"></script>
-      
-      <script>
-        function viewSource() {
-          const source = document.createElement("pre");
-          source.textContent = document.querySelector('script[src="donut.js"]').textContent;
-          document.querySelector("#article div").appendChild(source);
-        }
-      </script>
+
+      <div style="margin-bottom: 20px;">
+        <h2>Download CSV</h2>
+        <p>Click the button below to download the CUHK Canteen data in CSV format:</p>
+        <button onclick="window.location.href='cuhk_canteen.csv'">Download CSV</button>
+      </div>
+
     </body>
 
-        <body>
-            <h1>Understanding the Intricate Math Behind the Donut.c Code</h1>
-            <p>
-              In the blog post titled "Donut math: how donut.c works" by a1k0n, the author provides a detailed explanation of the famous "donut" code from 2006. The code renders a captivating ASCII art representation of a donut, and the blog post delves into the underlying mathematical concepts and techniques employed to achieve this visual effect.
-            </p>
-            <p>
-              The author starts by describing the process of 3D perspective rendering, where points in a 3D space are projected onto a 2D plane to create a 2D representation. The blog post explains the mathematical equations involved in this projection, emphasizing the importance of the screen distance and the field of view.
-            </p>
-            <p>
-              Moving on to the donut rendering, the author outlines the approach of creating a torus through the rotation of a 2D circle in 3D space. The post illustrates the rotational transformations using matrices and explains how to incorporate additional rotations for animation purposes.
-            </p>
-            <p>
-              Furthermore, the blog post addresses the optimization techniques employed in the donut code. By exploiting opportunities for simplification and minimizing zero values in the matrices, the code achieves a compact and efficient implementation.
-            </p>
-            <p>
-              The explanation provided in the blog post not only helps readers understand the intricacies of the donut.c code but also offers insights into the fundamental principles of 3D rendering and projection. It serves as a valuable resource for individuals interested in computer graphics, mathematics, and programming.
-            </p>
-            <p>
-                To know more, please visit the original post: 
-                <a href="https://www.a1k0n.net/2011/07/20/donut-math.html">https://www.a1k0n.net/2011/07/20/donut-math.html</a>
-              </p>
-
-            <h1>Donut-shaped C code explanation</h1>
-
-            <div class="video-container">
-              <iframe width="560" height="315" src="https://www.youtube.com/embed/DEqXNfs_HhY" frameborder="0" allowfullscreen></iframe>
-            </div>
-          
-            <p>
-              This is a video explanation by Lex Fridman on YouTube, where he discusses the donut-shaped C code that generates a 3D spinning donut. Watch the video to gain a deeper understanding of the code and the concepts behind it.
-            </p>
-          </body>
-      </section>
-        
-
-  
   <footer>
     <p>&copy; 2023 Jason Tsang. All rights reserved.</p>
   </footer>
 
+  <script>
+    // Define the URL of the source code
+    const url = 'cuhk_canteen.py';
+
+    // Define a function to load the source code with AJAX
+    function loadSourceCode() {
+      const xhr = new XMLHttpRequest();
+      xhr.onreadystatechange = function() {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+          document.getElementById('source-code').textContent = xhr.responseText;
+          Prism.highlightAll();
+        }
+      };
+      xhr.open('GET', url, true);
+      xhr.send();
+    }
+
+    // Call the function to load the source code
+    loadSourceCode();
+  </script>
+  
 </body>
 
 </html>
