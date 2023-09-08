@@ -38,6 +38,16 @@
     </ul>
   </nav>
 
+  <script>
+    const navLinks = document.querySelectorAll('.nav-link');
+    navLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.forEach(link => link.classList.remove('active'));
+        link.classList.add('active');
+      });
+    });
+  </script>
+
   <section id="about">
     <h2>About Me</h2>
     <p class="about-text">
