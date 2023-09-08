@@ -113,42 +113,34 @@
             </section>
             <section>
                 <h2>Certificates</h2>
-                <!-- Certificates content here -->
+                <p>
+                    <!-- Certificates content here -->
+                </p>
             </section>
             <section>
                 <h2>Skills</h2>
-                <!-- Skills content here -->
+                <p>
+                    <!-- Skills content here -->
+                </p>
             </section>
             <section>
                 <h2>Projects</h2>
-                <!-- Projects content here -->
+                <p>
+                    <!-- Projects content here -->
+                </p>
             </section>
         </main>
     </div>
-
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            var container = document.querySelector('.container');
-            var donut = document.querySelector('#d');
-            var mainSections = document.querySelectorAll('main section');
+        // JavaScript code to toggle visibility of <main> section when a navigation item is clicked
+        const navLinks = document.querySelectorAll("nav a");
+        const mainSection = document.querySelector("main");
 
-            function checkSlide() {
-                var triggerBottom = window.innerHeight * 0.8;
-
-                // Donut and Welcome Text Animation
-                var donutTop = donut.getBoundingClientRect().top;
-                var donutVisible = donutTop < triggerBottom;
-                donut.classList.toggle('active', donutVisible);
-
-                // Content Animation
-                mainSections.forEach(function(section) {
-                    var sectionTop = section.getBoundingClientRect().top;
-                    var sectionVisible = sectionTop < triggerBottom;
-                    section.classList.toggle('active', sectionVisible);
-                });
-            }
-
-            window.addEventListener('scroll', checkSlide);
+        navLinks.forEach(link => {
+            link.addEventListener("click", () => {
+                mainSection.style.display = "block";
+                mainSection.classList.add("active");
+            });
         });
     </script>
 </body>
