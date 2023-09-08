@@ -55,6 +55,14 @@
             flex-direction: column;
             align-items: center;
             height: calc(100% - 80px);
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        .container.active {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         .center {
@@ -91,7 +99,7 @@
         </nav>
     </header>
     <div class="container">
-        <section >
+        <section>
             <pre class="center" id="d"></pre>
             <script src="donut.js"></script>
             <div style="margin-top: 20px; margin-bottom: 20px;"></div>
@@ -118,17 +126,30 @@
             </section>
         </main>
     </div>
-    
+
     <script>
-        window.addEventListener('scroll', function() {
-            var description = document.querySelector('.description');
-            var main = document.querySelector('main');
-            if (window.scrollY > 100) {
-                description.style.display = 'block';
+        document.addEventListener('DOMContentLoaded', function() {
+            var container = document.querySelector('.container');
+            var donut = document.querySelector('#d');
+            var mainSections = document.querySelectorAll('main section');
+
+            function checkSlide() {
+                var triggerBottom = window.innerHeight * 0.8;
+
+                // Donut and Welcome Text Animation
+                var donutTop = donut.getBoundingClientRect().top;
+                var donutVisible = donutTop < triggerBottom;
+                donut.classList.toggle('active', donutVisible);
+
+                // Content Animation
+                mainSections.forEach(function(section) {
+                    var sectionTop = section.getBoundingClientRect().top;
+                    var sectionVisible = sectionTop < triggerBottom;
+                    section.classList.toggle('active', sectionVisible);
+                });
             }
-            if (window.scrollY > 500) {
-                main.style.display = 'block';
-            }
+
+            window.addEventListener('scroll', checkSlide);
         });
     </script>
 </body>
