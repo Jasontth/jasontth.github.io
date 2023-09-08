@@ -159,3 +159,45 @@ body {
   button:hover {
     background-color: #45a049;
   }
+
+  .timeline-item {
+    position: relative;
+    padding: 20px 40px;
+    margin: 20px 0;
+    background-color: #f1f1f1;
+    border-radius: 10px;
+  }
+  
+  .timeline-item::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 20px;
+    width: 0;
+    height: 0;
+    border-top: 20px solid transparent;
+    border-bottom: 20px solid transparent;
+    border-right: 20px solid #f1f1f1;
+  }
+  
+  .timeline-item::after {
+    content: "";
+    position: absolute;
+    top: 20px;
+    left: 0;
+    width: 20px;
+    height: 2px;
+    background-color: #f1f1f1;
+  }
+
+  .timeline-content {
+    position: relative;
+  }
+  
+  .institution-icon {
+    position: absolute;
+    top: 0;
+    right: 0px;
+    max-width: 100px; /* Adjust the width as needed */
+    max-height: 100px; /* Adjust the height as needed */
+  }
