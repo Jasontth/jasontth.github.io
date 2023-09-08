@@ -3,147 +3,27 @@
 <head>
     <title>Home</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f2f2f2;
-            margin: 0;
-            padding: 0;
-            height: 100vh;
-        }
-        .container {
-            width: fit-content;
-            margin: 0 auto;
-            padding: 20px;
-            background-color: #fff;
-            box-shadow: 0 0 10px rgba(0,0,0,0.2);
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            height: calc(100% - 80px);
-        }
-        .photo {
-            max-width: 200px;
-            height: auto;
-            flex: 1;
-            margin-right: 20px;
-        }
-        .description {
-            flex: 3;
-        }
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 10px 20px;
-            background-color: #333;
-            color: #fff;
-            height: 80px;
-        }
-        nav {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        nav ul {
-            display: flex;
-            list-style: none;
-            margin: 0;
-            padding: 0;
-        }
-        nav li {
-            margin: 0 10px;
-        }
-        nav a {
-            color: #fff;
-            text-decoration: none;
-            font-size: 16px;
-            font-weight: bold;
-            text-transform: uppercase;
-            padding: 10px;
-            transition: all 0.3s ease;
-        }
-        nav a:hover {
-            background-color: #fff;
-            color: #333;
-        }
-        h1 {
-            font-size: 32px;
-            margin-bottom: 20px;
-        }
-        h2 {
-            font-size: 20px;
-            margin-bottom: 10px;
-        }
-        p {
-            font-size: 14px;
-            line-height: 1.5;
-            margin-bottom: 10px;
-        }
-        ul {
-            margin: 0;
-            padding: 0;
-            list-style: none;
-        }
-        li {
-            margin-bottom: 5px;
-        }
-        .skills {
-            display: flex;
-            flex-wrap: wrap;
-            margin: 0 -5px;
-        }
-        .skill {
-            background-color: #f2f2f2;
-            padding: 5px;
-            margin: 5px;
-            border-radius: 5px;
-            font-size: 12px;
-        }
-        canvas {
-            display: block;
-            margin: 20px auto;
-            border: 1px solid #333;
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <header>
-        <h1>Jason Tsang</h1>
-        <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="blog.html">Blog</a></li>
-                <li><a href="projects.html">Projects</a></li>
-                <li><a href="dataset.html">Open Dataset</a></li>
-            </ul>
-        </nav>
+        <!-- Header content here -->
     </header>
     <div class="container">
         <img class="photo" src="icon.jpeg" alt="Icon">
         <div class="description">
-            <h2>Description</h2>
-            <p>Hi! I'm Jason, a technologist enthusiast with a passion for exploring and learning about various technologies 💻. I have extensive work experience in data science 📊, IoT 💡, and blockchain 🔒, and I'm always eager to stay up-to-date with the latest advancements in the field 🚀. I enjoy sharing my knowledge with others 🤓 and learning from their experiences. </p>
+            <!-- Description content here -->
         </div>
     </div>
     <div class="container">
         <main>
             <section>
                 <h2>Certificates</h2>
-                <ul>
-                    <li><a href="https://www.coursera.org/account/accomplishments/specialization/certificate/358DS99ACSMT">Mathematics for Machine Learning and Data Science Specialization</a></li>
-                    <li><a href="https://www.coursera.org/account/accomplishments/certificate/Y8E585KE7NTZ">Blockchain Basics</a></li>
-                </ul>
+                <!-- Certificates content here -->
             </section>
             <section>
                 <h2>Skills</h2>
-                <div class="skills">
-                    <div class="skill">Python</div>
-                    <div class="skill">R</div>
-                    <div class="skill">SQL</div>
-                    <div class="skill">MongoDB</div>
-                    <div class="skill">Linux</div>
-                </div>
+                <!-- Skills content here -->
             </section>
             <section>
                 <pre class="center" id="d"></pre>
