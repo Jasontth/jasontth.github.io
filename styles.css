@@ -44,7 +44,7 @@ body {
   }
   
   section {
-    padding: 40px;
+    padding: 10px 100px;
   }
   
   section h2 {
@@ -244,4 +244,9 @@ body {
   .about-text {
     font-size: 20px;
   }
+
+
+  
+
+  
 
