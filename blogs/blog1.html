@@ -36,7 +36,7 @@
   <section id="article">
     <body>
       <h2>Spinning Donut Code 🍩</h2>
-      <span id="view-count">0</span> views
+      <span id="view-count">Loading...</span> Views
       <div>
         <div id="donut-container"></div>
         <pre id="d"></pre>
@@ -86,25 +86,30 @@
           </body>
       </section>
         
-
-  
   <footer>
     <p>&copy; 2023 Jason Tsang. All rights reserved.</p>
   </footer>
-
-  <script>
-    // Retrieve the current view count from local storage or initialize it to 0
-    let viewCount = localStorage.getItem('viewCount') || 0;
   
-    // Update the view count element with the initial value
-    document.getElementById('view-count').textContent = viewCount;
+  <script>
+    // Function to update the view count
+    function updateViewCount() {
+      // Send a request to the server to increment the view count
+      fetch('blog1_counter.txt')
+        .then(response => response.text())
+        .then(count => {
+          const viewCountElement = document.getElementById('view-count');
+          viewCountElement.textContent = count.trim();
+        })
+        .catch(error => {
+          console.error('Error fetching view count:', error);
+        });
+    }
   
     // Increment the view count when the page loads
-    viewCount++;
-    document.getElementById('view-count').textContent = viewCount;
-  
-    // Store the updated view count in local storage
-    localStorage.setItem('viewCount', viewCount);
+    window.addEventListener('DOMContentLoaded', () => {
+      fetch('blog1_counter.txt', { method: 'POST' });
+      updateViewCount();
+    });
   </script>
   
 </body>
