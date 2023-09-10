@@ -115,7 +115,7 @@
 
     // Get the current view count value from the database
     viewCountRef.once('value').then((snapshot) => {
-      const viewCount = snapshot.val();
+      const viewCount = snapshot.val() || 0;
       viewCountElement.textContent = `${viewCount} views`;
     });
 
