@@ -119,6 +119,11 @@
       viewCountElement.textContent = `${viewCount} views`;
     });
 
+    // Increment the view count by one
+    viewCountRef.transaction((currentCount) => {
+      return (currentCount || 0) + 1;
+    });
+
   </script>
 
 </body>
