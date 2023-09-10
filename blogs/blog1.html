@@ -37,7 +37,7 @@
   <section id="article">
     <body>
       <h2>Spinning Donut Code 🍩</h2>
-      <p id="viewCount">views</p>
+      <p id="viewCount"></p>
         <div id="donut-container"></div>
         <pre id="d"></pre>
         <button onclick="openSourceCode()">View Source Code</button>
@@ -90,7 +90,7 @@
     <p>&copy; 2023 Jason Tsang. All rights reserved.</p>
   </footer>
 
-  <script type="module">
+  <script>
     // Import the functions you need from the SDKs you need
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.3.1/firebase-app.js";
     import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.3.1/firebase-analytics.js";
@@ -112,12 +112,16 @@
     // Initialize Firebase
     firebase.initializeApp(firebaseConfig);
 
+    // Get a reference to the view count element
+    const viewCountElement = document.getElementById('viewCount');
+
     // Get a reference to the view count in the database
     const viewCountRef = firebase.database().ref('blog1/view_count');
 
-    // Increment the view count by one
-    viewCountRef.transaction((currentCount) => {
-      return (currentCount || 0) + 1;
+    // Update the view count element with the current view count value
+    viewCountRef.on('value', (snapshot) => {
+      const viewCount = snapshot.val();
+      viewCountElement.textContent = `${viewCount} views`;
     });
 
   </script>
