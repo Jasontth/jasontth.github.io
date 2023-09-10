@@ -36,7 +36,7 @@
   <section id="article">
     <body>
       <h2>Spinning Donut Code 🍩</h2>
-      <div>
+      <div id="visits"><span id="view-count"></span> views</div> 
         <div id="donut-container"></div>
         <pre id="d"></pre>
         <button onclick="openSourceCode()">View Source Code</button>
@@ -88,5 +88,13 @@
   <footer>
     <p>&copy; 2023 Jason Tsang. All rights reserved.</p>
   </footer>
+
+  <script>
+    function cb(response) {
+        document.getElementById('visits').innerText = response.value;
+    }
+    </script>
+    <script async src="https://api.countapi.xyz/hit/jasontth.github.io/blogs/blog1.html/visits?callback=cb"></script>
+
 </body>
 </html>
