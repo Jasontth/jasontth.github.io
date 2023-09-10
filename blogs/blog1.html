@@ -22,22 +22,6 @@
         overflow-x: auto;
       }
   </style>
-  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
-  <script>
-    // Your web app's Firebase configuration
-    var firebaseConfig = {
-      apiKey: "AIzaSyCalCFb4yLL0J0rAuWMKtkko1cPcN-bI5Y",
-      authDomain: "resume-website-1d0aa.firebaseapp.com",
-      projectId: "resume-website-1d0aa",
-      storageBucket: "resume-website-1d0aa.appspot.com",
-      messagingSenderId: "826783515241",
-      appId: "1:826783515241:web:232f9d47d060522369d8f8",
-      measurementId: "G-TSV63C5J66"
-    };
-    // Initialize Firebase
-    firebase.initializeApp(firebaseConfig);
-  </script>
 </head>
 
 <body>
@@ -51,7 +35,6 @@
   <section id="article">
     <body>
       <h2>Spinning Donut Code 🍩</h2>
-        <div id="hitCount">views</div>
         <div id="donut-container"></div>
         <pre id="d"></pre>
         <button onclick="openSourceCode()">View Source Code</button>
@@ -103,32 +86,6 @@
   <footer>
     <p>&copy; 2023 Jason Tsang. All rights reserved.</p>
   </footer>
-
-  <script>
-    // Get a reference to the Firestore database
-    var db = firebase.firestore();
-  
-    // Get a reference to the hit count document
-    var hitCountRef = db.collection('resume-website-1d0aa').doc('hit-counter');
-  
-    // Retrieve the current hit count and update the HTML element
-    hitCountRef.get().then(function(doc) {
-      if (doc.exists) {
-        var hitCount = doc.data().count || 0;
-        var hitCountElement = document.getElementById('hitCount');
-        hitCountElement.textContent = 'Hit Count: ' + hitCount;
-      }
-    }).catch(function(error) {
-      console.error('Error getting hit count:', error);
-    });
-  
-    // Increment the hit count and update it in the Firestore document
-    hitCountRef.update({
-      count: firebase.firestore.FieldValue.increment(1)
-    }).catch(function(error) {
-      console.error('Error updating hit count:', error);
-    });
-  </script>
 
 </body>
 </html>
