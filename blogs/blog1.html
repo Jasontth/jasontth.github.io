@@ -36,7 +36,6 @@
   <section id="article">
     <body>
       <h2>Spinning Donut Code 🍩</h2>
-      <span id="view-count">Loading...</span> views
       <div>
         <div id="donut-container"></div>
         <pre id="d"></pre>
@@ -89,27 +88,7 @@
   <footer>
     <p>&copy; 2023 Jason Tsang. All rights reserved.</p>
   </footer>
-  
-  <script>
-    // Function to update the view count
-    function updateViewCount() {
-      // Send a request to the server to increment the view count
-      fetch('blog1_counter.txt', { method: 'POST' })
-        .then(response => response.text())
-        .then(count => {
-          const viewCountElement = document.getElementById('view-count');
-          viewCountElement.textContent = count.trim();
-        })
-        .catch(error => {
-          console.error('Error fetching view count:', error);
-        });
-    }
-  
-    // Increment the view count when the page loads
-    window.addEventListener('DOMContentLoaded', () => {
-      updateViewCount();
-    });
-  </script>
+
   
 </body>
 
