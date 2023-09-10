@@ -22,6 +22,8 @@
         overflow-x: auto;
       }
   </style>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
 </head>
 
 <body>
@@ -35,6 +37,7 @@
   <section id="article">
     <body>
       <h2>Spinning Donut Code 🍩</h2>
+      <p id="viewCount">views</p>
         <div id="donut-container"></div>
         <pre id="d"></pre>
         <button onclick="openSourceCode()">View Source Code</button>
@@ -86,6 +89,38 @@
   <footer>
     <p>&copy; 2023 Jason Tsang. All rights reserved.</p>
   </footer>
+
+  <script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.3.1/firebase-app.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.3.1/firebase-analytics.js";
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+  
+    // Your web app's Firebase configuration
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    const firebaseConfig = {
+      apiKey: "AIzaSyD77oQgRFTauLXol5ai2My9RvNjuIv3hoc",
+      authDomain: "resume-website-7c7ff.firebaseapp.com",
+      projectId: "resume-website-7c7ff",
+      storageBucket: "resume-website-7c7ff.appspot.com",
+      messagingSenderId: "896649471462",
+      appId: "1:896649471462:web:14a7136209b094f2cb6227",
+      measurementId: "G-SECZR9P6TY"
+    };
+  
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+
+    // Get a reference to the view count in the database
+    const viewCountRef = firebase.database().ref('blog1/view_count');
+
+    // Increment the view count by one
+    viewCountRef.transaction((currentCount) => {
+      return (currentCount || 0) + 1;
+    });
+
+  </script>
 
 </body>
 </html>
