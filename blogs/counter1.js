@@ -26,11 +26,11 @@ postRef.once("value", (snapshot) => {
     // Check if the current IP address is already recorded
     uniqueIPs.push(currentIP);
 
-    // Update the unique IP addresses in the database
-    postRef.set(uniqueIPs);
-
     // Remove duplicates from the uniqueIPs array
     uniqueIPs = [...new Set(uniqueIPs)];
+
+    // Update the unique IP addresses in the database
+    postRef.set(uniqueIPs);
 
     // Calculate the latest view count
     const viewCount = uniqueIPs.length;
