@@ -19,7 +19,7 @@ const postRef = firebase.database().ref("blog/blog1/views");
 // Retrieve the current view count and unique IP addresses from the database
 postRef.once("value", (snapshot) => {
     const viewData = snapshot.val();
-    let viewCount = viewData.count || 0;
+    let viewCount = viewData.ipAddress ? viewData.ipAddress.length : 0;
     let uniqueIPs = viewData.ipAddress || [];
 
     // Get the current visitor's IP address
@@ -31,8 +31,8 @@ postRef.once("value", (snapshot) => {
         viewCount++;
     }
 
-    // Update the view count and unique IP addresses in the database
-    postRef.update({ count: viewCount, ipAddress: uniqueIPs });
+    // Update the unique IP addresses in the database
+    postRef.update({ ipAddress: uniqueIPs });
 
     // Display the view count on the blog
     const viewCountElement = document.getElementById("viewCount");
