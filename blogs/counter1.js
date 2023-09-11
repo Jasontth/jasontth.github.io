@@ -12,7 +12,6 @@ const firebaseConfig = {
 
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
-const analytics = firebase.analytics();
 
 // Get a reference to the blog post in the Firebase Realtime Database
 const postRef = firebase.database().ref("blog/blog1");
