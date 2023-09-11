@@ -16,22 +16,37 @@ firebase.initializeApp(firebaseConfig);
 // Get a reference to the blog post in the Firebase Realtime Database
 const postRef = firebase.database().ref("blog/blog1");
 
-// Retrieve the current view count from the database and increment it
-postRef.transaction((post) => {
-    if (post) {
-        if (!post.views) {
-            post.views = 1;
+// Get the user's IP address
+const getIPAddress = async () => {
+    const response = await fetch("https://api.ipify.org?format=json");
+    const data = await response.json();
+    return data.ip;
+  };
+  
+  // Check if the user's IP address is already in the database
+  getIPAddress().then((ipAddress) => {
+    postRef
+      .child("views")
+      .orderByChild("ipAddress")
+      .equalTo(ipAddress)
+      .once("value", (snapshot) => {
+        if (snapshot.exists()) {
+          // User has already viewed the page, display existing view count
+          const viewCount = snapshot.val()[Object.keys(snapshot.val())[0]].count;
+          const viewCountElement = document.getElementById("viewCount");
+          viewCountElement.innerText = viewCount;
         } else {
-            post.views++;
+          // User has not viewed the page, increment view count and add IP address to database
+          postRef.child("views").push({ count: 1, ipAddress: ipAddress });
+          const viewCountElement = document.getElementById("viewCount");
+          viewCountElement.innerText = 1;
         }
-    }
-    return post;
-});
-
-// Display the view count on the blog
-postRef.on("value", (snapshot) => {
-    const post = snapshot.val();
-    const viewCount = post.views || 0;
+      });
+  });
+  
+  // Listen for changes to the view count in the database and update the display
+  postRef.child("views").on("value", (snapshot) => {
     const viewCountElement = document.getElementById("viewCount");
+    const viewCount = snapshot.numChildren();
     viewCountElement.innerText = viewCount;
-});
+  });
