@@ -16,10 +16,9 @@ firebase.initializeApp(firebaseConfig);
 // Get a reference to the blog post in the Firebase Realtime Database
 const postRef = firebase.database().ref("blog/blog1/views");
 
-// Retrieve the current view count and unique IP addresses from the database
+// Retrieve the current IP addresses from the database
 postRef.once("value", (snapshot) => {
     const viewData = snapshot.val();
-    let viewCount = viewData.ipAddress ? viewData.ipAddress.length : 0;
     let uniqueIPs = viewData.ipAddress || [];
 
     // Get the current visitor's IP address
@@ -28,11 +27,13 @@ postRef.once("value", (snapshot) => {
     // Check if the current IP address is already recorded
     if (!uniqueIPs.includes(currentIP)) {
         uniqueIPs.push(currentIP);
-        viewCount++;
     }
 
     // Update the unique IP addresses in the database
     postRef.update({ ipAddress: uniqueIPs });
+
+    // Calculate the latest view count
+    const viewCount = uniqueIPs.length;
 
     // Display the view count on the blog
     const viewCountElement = document.getElementById("viewCount");
