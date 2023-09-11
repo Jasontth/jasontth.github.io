@@ -14,21 +14,19 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 
 // Get a reference to the blog post in the Firebase Realtime Database
-const postRef = firebase.database().ref("blog/blog1/views");
+const postRef = firebase.database().ref("blog/blog1");
 
 // Retrieve the current IP addresses from the database
 postRef.once("value", (snapshot) => {
-  const viewData = snapshot.val();
-  
-  if (viewData && viewData.ipAddress) {
-    const uniqueIPs = viewData.ipAddress || [];
+    const viewData = snapshot.val();
+    let uniqueIPs = viewData.ipAddress || [];
 
     // Get the current visitor's IP address
     const currentIP = getVisitorIP();
 
     // Check if the current IP address is already recorded
     if (!uniqueIPs.includes(currentIP)) {
-      uniqueIPs.push(currentIP);
+        uniqueIPs.push(currentIP);
     }
 
     // Update the unique IP addresses in the database
@@ -39,24 +37,12 @@ postRef.once("value", (snapshot) => {
 
     // Display the view count on the blog
     const viewCountElement = document.getElementById("viewCount");
-    viewCountElement.innerText = viewCount.toString();
-    
-    console.log("View count:", viewCount);
-  } else {
-    console.log("No view data found in the database.");
-  }
-}).catch((error) => {
-  console.error("Error retrieving view data:", error);
+    viewCountElement.innerText = viewCount;
 });
 
 // Function to get the visitor's IP address
 async function getVisitorIP() {
-  try {
     const response = await fetch("https://api.ipify.org?format=json");
     const data = await response.json();
     return data.ip;
-  } catch (error) {
-    console.error("Error fetching visitor IP:", error);
-    return null;
-  }
 }
