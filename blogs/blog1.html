@@ -22,6 +22,8 @@
         overflow-x: auto;
       }
   </style>
+      <script src="https://www.gstatic.com/firebasejs/10.3.1/firebase-app.js"></script>
+      <script src="https://www.gstatic.com/firebasejs/10.3.1/firebase-analytics.js"></script>
 </head>
 
 <body>
@@ -35,7 +37,6 @@
   <section id="article">
     <body>
       <h2>Spinning Donut Code 🍩</h2>
-      <p id="viewCount"></p>
         <div id="donut-container"></div>
         <pre id="d"></pre>
         <button onclick="openSourceCode()">View Source Code</button>
@@ -88,7 +89,6 @@
     <p>&copy; 2023 Jason Tsang. All rights reserved.</p>
   </footer>
 
-  <script type="module" src="firebase.js"></script>
-
+  <script src="counter1.js"></script>
 </body>
 </html>
