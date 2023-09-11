@@ -14,13 +14,13 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 
 // Get a reference to the blog post in the Firebase Realtime Database
-const postRef = firebase.database().ref("blog/blog1");
+const postRef = firebase.database().ref("blog/blog1/views");
 
 // Retrieve the current view count and unique IP addresses from the database
 postRef.once("value", (snapshot) => {
-    const post = snapshot.val();
-    let viewCount = post.views || 0;
-    let uniqueIPs = post.uniqueIPs || [];
+    const viewData = snapshot.val();
+    let viewCount = viewData.count || 0;
+    let uniqueIPs = viewData.ipAddress || [];
 
     // Get the current visitor's IP address
     const currentIP = getVisitorIP();
@@ -32,7 +32,7 @@ postRef.once("value", (snapshot) => {
     }
 
     // Update the view count and unique IP addresses in the database
-    postRef.update({ views: viewCount, uniqueIPs: uniqueIPs });
+    postRef.update({ count: viewCount, ipAddress: uniqueIPs });
 
     // Display the view count on the blog
     const viewCountElement = document.getElementById("viewCount");
@@ -41,7 +41,7 @@ postRef.once("value", (snapshot) => {
 
 // Function to get the visitor's IP address
 async function getVisitorIP() {
-    const response = fetch("https://api.ipify.org?format=json");
-    const data = response.json();
+    const response = await fetch("https://api.ipify.org?format=json");
+    const data = await response.json();
     return data.ip;
 }
