@@ -23,30 +23,19 @@ const getIPAddress = async () => {
     return data.ip;
   };
   
-  // Check if the user's IP address is already in the database
-  getIPAddress().then((ipAddress) => {
-    postRef
-      .child("views")
-      .orderByChild("ipAddress")
-      .equalTo(ipAddress)
-      .once("value", (snapshot) => {
-        if (snapshot.exists()) {
-          // User has already viewed the page, display existing view count
-          const viewCount = snapshot.val()[Object.keys(snapshot.val())[0]].count;
-          const viewCountElement = document.getElementById("viewCount");
-          viewCountElement.innerText = viewCount;
-        } else {
-          // User has not viewed the page, increment view count and add IP address to database
-          postRef.child("views").push({ count: 1, ipAddress: ipAddress });
-          const viewCountElement = document.getElementById("viewCount");
-          viewCountElement.innerText = 1;
+  // Increment the view count in the database
+  const incrementViewCount = async () => {
+    const ipAddress = await getIPAddress();
+    postRef.transaction((post) => {
+      if (post) {
+        if (!post.views) {
+          post.views = {};
         }
-      });
-  });
-  
-  // Listen for changes to the view count in the database and update the display
-  postRef.child("views").on("value", (snapshot) => {
-    const viewCountElement = document.getElementById("viewCount");
-    const viewCount = snapshot.numChildren();
-    viewCountElement.innerText = viewCount;
-  });
+        if (!post.views[ipAddress]) {
+          post.views[ipAddress] = true;
+          post.viewCount = Object.keys(post.views).length;
+        }
+      }
+      return post;
+    });
+  };
