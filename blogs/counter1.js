@@ -21,7 +21,7 @@ postRef.once("value", async (snapshot) => {
   let uniqueIPs = snapshot.val() || [];
 
   // Get the current visitor's IP address
-  const currentIP = await getVisitorIP();
+  const currentIP = await getHashedIP();
 
   // Check if the current IP address is already recorded
   uniqueIPs.push(currentIP);
