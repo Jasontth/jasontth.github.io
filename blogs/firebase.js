@@ -12,8 +12,8 @@ const firebaseConfig = {
   };
 
 // Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const database = getDatabase(app);
+firebase.initializeApp(firebaseConfig);
+const database = firebase.database();
 
 // Get a reference to the view count element
 const viewCountElement = document.getElementById('viewCount');
