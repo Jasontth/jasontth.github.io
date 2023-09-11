@@ -40,9 +40,11 @@ postRef.once("value", async (snapshot) => {
   viewCountElement.innerText = viewCount;
 });
 
-// Function to get the visitor's IP address
-async function getVisitorIP() {
-  const response = await fetch("https://api.ipify.org?format=json");
-  const data = await response.json();
-  return data.ip;
-}
+async function getHashedIP() {
+    const response = await fetch("https://api.ipify.org?format=json");
+    const data = await response.json();
+    const ip = data.ip;
+    const hash = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(ip));
+    const hashedIP = Array.from(new Uint8Array(hash)).map(b => b.toString(16).padStart(2, '0')).join('');
+    return hashedIP;
+  }
