@@ -27,10 +27,9 @@ postRef.once("value", (snapshot) => {
     // Check if the current IP address is already recorded
     if (!uniqueIPs.includes(currentIP)) {
         uniqueIPs.push(currentIP);
+        // Update the unique IP addresses in the database
+        postRef.update({ ipAddress: uniqueIPs });
     }
-
-    // Update the unique IP addresses in the database
-    postRef.update({ ipAddress: uniqueIPs });
 
     // Calculate the latest view count
     const viewCount = uniqueIPs.length;
