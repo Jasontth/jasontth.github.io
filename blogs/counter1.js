@@ -14,12 +14,11 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 
 // Get a reference to the blog post in the Firebase Realtime Database
-const postRef = firebase.database().ref("blog/blog1");
+const postRef = firebase.database().ref("blog/blog1/ipAddress");
 
 // Retrieve the current IP addresses from the database
 postRef.once("value", (snapshot) => {
-    const viewData = snapshot.val();
-    let uniqueIPs = viewData.ipAddress || [];
+    const uniqueIPs = snapshot.val() || [];
 
     // Get the current visitor's IP address
     const currentIP = getVisitorIP();
@@ -30,7 +29,7 @@ postRef.once("value", (snapshot) => {
     }
 
     // Update the unique IP addresses in the database
-    postRef.update({ ipAddress: uniqueIPs });
+    postRef.set(uniqueIPs);
 
     // Calculate the latest view count
     const viewCount = uniqueIPs.length;
