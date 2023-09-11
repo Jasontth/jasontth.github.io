@@ -1,5 +1,4 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.3.1/firebase-app.js";
-import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.3.1/firebase-analytics.js";
 
 const firebaseConfig = {
     apiKey: "AIzaSyD77oQgRFTauLXol5ai2My9RvNjuIv3hoc",
@@ -13,13 +12,14 @@ const firebaseConfig = {
   };
 
 // Initialize Firebase
-firebase.initializeApp(firebaseConfig);
+const app = initializeApp(firebaseConfig);
+const database = getDatabase(app);
 
 // Get a reference to the view count element
 const viewCountElement = document.getElementById('viewCount');
 
 // Get a reference to the view count in the database
-const viewCountRef = firebase.database().ref('blog1/view_count');
+const viewCountRef = ref(database, 'blog1/view_count');
 
 // Get the current view count value from the database
 viewCountRef.once('value').then((snapshot) => {
