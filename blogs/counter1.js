@@ -17,32 +17,32 @@ firebase.initializeApp(firebaseConfig);
 const postRef = firebase.database().ref("blog/blog1/ipAddress");
 
 // Retrieve the current IP addresses from the database
-postRef.once("value", (snapshot) => {
-    const uniqueIPs = snapshot.val() || [];
+postRef.once("value", async (snapshot) => {
+  let uniqueIPs = snapshot.val() || [];
 
-    // Get the current visitor's IP address
-    const currentIP = getVisitorIP();
+  // Get the current visitor's IP address
+  const currentIP = await getVisitorIP();
 
-    // Check if the current IP address is already recorded
-    uniqueIPs.push(currentIP);
+  // Check if the current IP address is already recorded
+  uniqueIPs.push(currentIP);
 
-    // Remove duplicates from the uniqueIPs array
-    uniqueIPs = [...new Set(uniqueIPs)];
+  // Remove duplicates from the uniqueIPs array
+  uniqueIPs = [...new Set(uniqueIPs)];
 
-    // Update the unique IP addresses in the database
-    postRef.set(uniqueIPs);
+  // Update the unique IP addresses in the database
+  postRef.set(uniqueIPs);
 
-    // Calculate the latest view count
-    const viewCount = uniqueIPs.length;
+  // Calculate the latest view count
+  const viewCount = uniqueIPs.length;
 
-    // Display the view count on the blog
-    const viewCountElement = document.getElementById("viewCount");
-    viewCountElement.innerText = viewCount;
+  // Display the view count on the blog
+  const viewCountElement = document.getElementById("viewCount");
+  viewCountElement.innerText = viewCount;
 });
 
 // Function to get the visitor's IP address
 async function getVisitorIP() {
-    const response = await fetch("https://api.ipify.org?format=json");
-    const data = await response.json();
-    return data.ip;
+  const response = await fetch("https://api.ipify.org?format=json");
+  const data = await response.json();
+  return data.ip;
 }
