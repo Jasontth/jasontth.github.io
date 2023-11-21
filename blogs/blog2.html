@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unleashing the Power of Webscraping: A Step-by-Step Guide to Scraping Reports Online 🚀</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" type="image/png" href="/photos/book-icon.png">
+  <style>
+      button {
+        background-color: #4CAF50;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+    pre {
+        padding: 10px;
+        font-size: 100%;
+        overflow-x: auto;
+      }
+      #source-code {
+    border: 1px solid #ccc;
+    padding: 10px;
+    overflow: auto;
+    max-height: 500px;
+  }
+  </style>
+</head>
+
+<body>
+  <nav class="main-nav">
+    <ul>
+      <li><a href="javascript:history.back()"><i class="fas fa-arrow-left"></i>⬅️ Back</a></li>
+
+    </ul>
+  </nav>
+
+  <section id="article">
+    <body>
+      <h2>Unleashing the Power of Webscraping: A Step-by-Step Guide to Scraping Reports Online 🚀</h2>
+      </div>
+      
+    </body>
+
+        <body>
+            <p>
+              Are you tired of spending countless hours manually searching for and downloading reports or academic journals? Well, I have good news for you! I have developed a solution using Python that will automate this process and save you valuable time and effort. In this step-by-step guide, I will walk you through the process of webscraping reports online, specifically using the example of scraping climate-change-related reports from the International Energy Agency (IEA).
+            </p>
+            <h3>
+              Step 1: Importing the Necessary Libraries
+            </h3>
+            <p>To begin, make sure you have Python installed on your computer. You'll also need to install the following libraries: requests, BeautifulSoup, time, and pandas. You can install them using pip, the Python package installer.            </p>
+            <h3>
+              Step 2: Locating the Report Links
+            </h3>
+            <p>
+              In this step, we will use the requests library to send HTTP requests and retrieve the HTML content of the web pages. We will then use BeautifulSoup to parse the HTML and extract the links to the reports.
+            </p>
+            <p>
+              First, we create an empty list called links_list to store the URLs of the reports. Then, using a for loop, we iterate through the pages of the IEA's analysis reports section (in this example, from page 0 to 63). We send a GET request to each page, extract the links that start with '/reports/', and add them to the links_list.
+            </p>
+            <h3>
+              Step 3: Extracting Report Data
+            </h3>
+            <p>
+              Now that we have the URLs of the reports, we can proceed to extract the desired information from each report. In this example, we will extract the title, publication date, summary, external link, PDF link, and report type.
+            </p>
+            <p>
+              Using another for loop, we iterate through each report URL in the links_list. We send a GET request to the report page, parse the HTML using BeautifulSoup, and extract the required information using appropriate HTML tags and attributes.
+            </p>
+            <p>
+              We store the extracted data in a Pandas dataframe called df, with columns for each piece of information. For each report, we create a new row in the dataframe and append it using pd.concat.
+            </p>
+            <h3>
+              Step 4: Downloading PDF Reports
+            </h3>
+            <p>
+              In this final step, we download the PDF reports. We iterate through each row of the dataframe using the iterrows() function. If a PDF link is available, we send a GET request to the URL, and then save the response content as a PDF file on our local machine.
+            </p>
+            <h3>
+              Below is the full code for your reference:
+            </h3>
+            <pre id="source-code">
+              <!-- The source code of climate_iea_scrapper.py will be loaded here -->
+            </pre>
+          </body>
+      </section>
+        
+      <script>
+        // Define the URL of the source code
+        const url = 'climate_iea_scrapper.py';
+    
+        // Define a function to load the source code with AJAX
+        function loadSourceCode() {
+          const xhr = new XMLHttpRequest();
+          xhr.onreadystatechange = function() {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+              document.getElementById('source-code').textContent = xhr.responseText;
+              Prism.highlightAll();
+            }
+          };
+          xhr.open('GET', url, true);
+          xhr.send();
+        }
+    
+        // Call the function to load the source code
+        loadSourceCode();
+      </script>
+
+  <footer>
+    <p>&copy; 2023 Jason Tsang. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>
