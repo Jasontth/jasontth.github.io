@@ -66,9 +66,12 @@ for report_url in links_list:
 # download pdf files
 for index, row in df.iterrows():
     if row['pdf_link']:
-        url = 'https://www.iea.org' + row['pdf_link']
-        response = requests.get(url)
-        with open(f"pdf_files_iea/{index}.pdf", 'wb') as f:
+        headers = {
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3'
+        }
+        response = requests.get(row['pdf_link'], headers=headers)
+        name = row['title'].replace('/', '_')
+        with open(f"{name}.pdf", 'wb') as f:
             f.write(response.content)
         time.sleep(1)
 
