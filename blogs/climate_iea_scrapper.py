@@ -7,7 +7,7 @@ import pandas as pd
 links_list = []
 
 # Get the data from https://www.iea.org/analysis?type=report from page 0 to 63
-for page in range(0, 64):
+for page in range(0, 1):
     url = 'https://www.iea.org/analysis?type=report&page='
     url = url + str(page)
     headers = {
