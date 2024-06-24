@@ -93,14 +93,17 @@ const resumeDetails = {
     research: [
         {
             title: "Fine-Tuning Pre-Trained Transformers for Climate Claim Verification",
-            link: "https://jasontth.github.io/researches/climate-claim-verification.html",
+            link: "http://dx.doi.org/10.13140/RG.2.2.35652.03200",
             abstract: "Misinformation and disinformation on the internet present a significant challenge in the context of climate change debate. The dissemination of false or misleading information can hinder public understanding and impede efforts to combat the growing issue of climate change. While social media platforms have implemented automatic fact-checking algorithms, existing models lack domain-specific training to effectively verify climate change-related information. As a remedy, a new fact-checking dataset is proposed that combines data from CLIMATE-FEVER with web-scraped information, resulting in a comprehensive dataset comprising 8,115 annotated claim-evidence pairs. The improved dataset is used to fine-tune a variety of pre-trained transformers for climate claim verification tasks. The best model, RoBERTa, achieved an accuracy of 0.7288 and F1-score of 0.7229, improving upon previously reported state-of-the-art (SoTA) F1-score of 0.7182.",
             video: "https://www.youtube.com/watch?v=sERNbgyJIZk"
         },
         {
             title: "Machine Learning Approaches for Bitcoin Address Classification: A Comprehensive Review and Dataset",
-            link: "http://dx.doi.org/10.13140/RG.2.2.35652.03200",
             abstract: "The recent crises and bubble bursts in the crypto market, such as the Terra incident and the collapse of FTX, have raised concerns among government entities and investors. To increase transparency and monitor on-chain activities, reliable methods are needed to identify illegal transactions. Machine learning techniques can serve as valuable tools for classifying addresses and detecting illicit on-chain activities. This paper focuses on Bitcoin, the most popular cryptocurrency, and aims to provide a comprehensive review of the feasibility of using machine learning classification methods for labeling Bitcoin addresses. Additionally, we present a publicly available dataset for address labeling by scraping data from Blockchain.com. The dataset includes 15,355 labeled Bitcoin addresses, as well as labels for Tokens, ETH, and BCH addresses. These resources are made available on GitHub (https://github.com/Jasontth/crypto_label) to facilitate research and enable the training of classification models in this domain."
+        },
+        {
+            title: "Artificial Intelligence in Plant Pathology",
+            abstract: "This paper presents a prototype application for plant disease identification using Convolutional Neural Networks (CNNs). The goal is to leverage AI techniques to accurately and efficiently identify plant diseases. The application utilizes a dataset of plant images and employs CNNs for feature extraction and disease classification. Experimental results demonstrate the effectiveness of the prototype in achieving high accuracy. The integration of AI and plant pathology has the potential to revolutionize disease management practices in agriculture."
         }
     ],
     projectsCompetitions: [
