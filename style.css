@@ -373,3 +373,18 @@ span.material-symbols-rounded {
 
 
 
+  .disclaimer {
+    background-color: #fff6e0; /* Yellowish background color */
+    border: 1px solid #f2dca7; /* Lighter border color */
+    padding: 10px 15px;
+    border-radius: 5px;
+    display: inline-block;
+    margin-top: 20px; /* Added top margin to add more space above the disclaimer */
+}
+
+.disclaimer p {
+    margin: 0;
+    font-size: 14px;
+    color: #b58727; /* Darker yellowish text color for better contrast */
+}
+

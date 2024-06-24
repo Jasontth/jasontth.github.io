@@ -10,11 +10,15 @@ let conversationHistory = [];
 
 const loadDataFromLocalstorage = () => {
     // Load saved chats and theme from local storage and apply/add on the page
-    const defaultText = `<div class="default-text">
-                            <h1>This is Jason</h1>
-                            <p>Ask anything about me<br> Your chat history will be displayed here</p>
-                        </div>`
-
+    const defaultText = `
+        <div class="default-text">
+            <h1>This is Jason</h1>
+            <p>Ask anything about me<br> Your chat history will be displayed here</p>
+            <div class="disclaimer">
+                <p>Important Notice: This AI may occasionally hallucinate; please verify important information via the navigation bar.</p>
+            </div>
+        </div>
+    `;
     chatContainer.innerHTML = localStorage.getItem("all-chats") || defaultText;
     chatContainer.scrollTo(0, chatContainer.scrollHeight); // Scroll to bottom of the chat container
 }
