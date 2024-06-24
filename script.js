@@ -13,6 +13,7 @@ const loadDataFromLocalstorage = () => {
     const defaultText = `
         <div class="default-text">
             <h1>This is Jason</h1>
+            <h2>Powered by Llama-3-8b</h2>
             <p>Ask anything about me</p>
             <div class="disclaimer">
                 <p>Important Notice: This AI may occasionally hallucinate; please verify important information via the navigation bar.</p>
