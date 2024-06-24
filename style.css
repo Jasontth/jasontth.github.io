@@ -1,0 +1,375 @@
+/* Import Google font - Poppins */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+:root {
+  --text-color: #FFFFFF;
+  --icon-color: #ACACBE;
+  --icon-hover-bg: #5b5e71;
+  --placeholder-color: #dcdcdc;
+  --outgoing-chat-bg: #343541;
+  --incoming-chat-bg: #444654;
+  --outgoing-chat-border: #343541;
+  --incoming-chat-border: #444654;
+}
+
+
+body {
+  background: var(--outgoing-chat-bg);
+  padding-top: 25px;
+  margin-bottom: 100px; /* Adjust based on the height of the typing-container */
+}
+
+/* Chats container styling */
+.chat-container {
+    padding: 20px 10vw; /* Adjusted padding */
+    margin-bottom: 5px;
+    max-width: 950px; /* Match the max-width of typing container */
+    width: 100%;
+    margin-left: auto; /* Center align horizontally */
+    margin-right: auto; /* Center align horizontally */
+}
+
+:where(.chat-container, textarea)::-webkit-scrollbar {
+  width: 6px;
+}
+
+:where(.chat-container, textarea)::-webkit-scrollbar-track {
+  background: var(--incoming-chat-bg);
+  border-radius: 25px;
+}
+
+:where(.chat-container, textarea)::-webkit-scrollbar-thumb {
+  background: var(--icon-color);
+  border-radius: 25px;
+}
+
+/* Define styles for hyperlinks */
+.chat-container a {
+  color: #2e7dd1; /* Adjust color as per your design */
+  text-decoration: underline; /* Add underline to indicate it's a link */
+}
+
+.chat-container a:hover {
+  color: #0056b3; /* Darker shade for hover effect */
+  text-decoration: underline; /* Underline on hover */
+}
+
+.default-text {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 70vh;
+  padding: 0 10px;
+  text-align: center;
+  color: var(--text-color);
+}
+
+.default-text h1 {
+  font-size: 3.3rem;
+}
+
+.default-text p {
+  margin-top: 10px;
+  font-size: 1.1rem;
+}
+
+.chat-container .chat {
+  padding: 25px 10px;
+  display: flex;
+  justify-content: center;
+  color: var(--text-color);
+}
+
+.chat-container .chat.outgoing {
+  background: var(--outgoing-chat-bg);
+  border: 1px solid var(--outgoing-chat-border);
+  justify-content: flex-end; /* Align user messages to the right */
+}
+
+.chat-container .chat.incoming {
+  background: var(--incoming-chat-bg);
+  border: 1px solid var(--incoming-chat-border);
+  justify-content: flex-start; /* Align bot messages to the left */
+}
+
+.chat .chat-content {
+  display: flex;
+  max-width: 1200px;
+  width: 100%;
+  align-items: flex-start;
+  justify-content: flex-start; /* Ensure content aligns to the start for both types */
+}
+
+.chat-container .chat.outgoing .chat-content {
+  justify-content: flex-end; /* Ensure outgoing messages align to the end */
+}
+
+span.material-symbols-rounded {
+  user-select: none;
+  cursor: pointer;
+}
+
+.chat .chat-content span {
+  cursor: pointer;
+  font-size: 1.3rem;
+  color: var(--icon-color);
+  visibility: hidden;
+}
+
+.chat:hover .chat-content:not(:has(.typing-animation), :has(.error)) span {
+  visibility: visible;
+}
+
+.chat .chat-details {
+  display: flex;
+  align-items: center;
+}
+
+.chat .chat-details img {
+  width: 35px;
+  height: 35px;
+  align-self: flex-start;
+  object-fit: cover;
+  border-radius: 2px;
+  margin-left: 8px; /* Add margin to the left to push the image to the right */
+}
+
+.chat .chat-details p {
+  white-space: pre-wrap;
+  font-size: 1.05rem;
+  padding: 0 50px 0 25px;
+  color: var(--text-color);
+  word-break: break-word;
+}
+
+.chat .chat-details p.error {
+  color: #e55865;
+}
+
+.chat .typing-animation {
+  padding-left: 25px;
+  display: inline-flex;
+}
+
+.typing-animation .typing-dot {
+  height: 7px;
+  width: 7px;
+  border-radius: 50%;
+  margin: 0 3px;
+  opacity: 0.7;
+  background: var(--text-color);
+  animation: animateDots 1.5s var(--delay) ease-in-out infinite;
+}
+
+.typing-animation .typing-dot:first-child {
+  margin-left: 0;
+}
+
+@keyframes animateDots {
+  0%, 44% {
+    transform: translateY(0px);
+  }
+  28% {
+    opacity: 0.4;
+    transform: translateY(-6px);
+  }
+  44% {
+    opacity: 0.2;
+  }
+}
+
+/* Typing container styling */
+.typing-container {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-left: 10vw;
+    padding-right: 10vw;
+    justify-content: center;
+    z-index: 10;
+    background: var(--outgoing-chat-bg);
+    box-shadow: 0px -2px 5px rgba(0, 0, 0, 0.1);
+    max-width: 100%; /* Ensure container stretches to full width */
+  }
+
+.typing-container .typing-content {
+  display: flex;
+  max-width: 670px;
+  width: 100%;
+  align-items: flex-end;
+}
+
+.typing-container .typing-textarea {
+  width: 100%;
+  display: flex;
+  position: relative;
+}
+
+.typing-textarea textarea {
+  resize: none;
+  height: 55px;
+  width: 100%;
+  border: none;
+  padding: 15px 45px 15px 20px;
+  color: var(--text-color);
+  font-size: 1rem;
+  border-radius: 4px;
+  max-height: 250px;
+  overflow-y: auto;
+  background: var(--incoming-chat-bg);
+  outline: 1px solid var(--incoming-chat-border);
+}
+
+.typing-textarea textarea::placeholder {
+  color: var(--placeholder-color);
+}
+
+.typing-content span {
+  width: 55px;
+  height: 55px;
+  display: flex;
+  border-radius: 4px;
+  font-size: 1.35rem;
+  align-items: center;
+  justify-content: center;
+  color: var(--icon-color);
+}
+
+.typing-textarea span {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  visibility: hidden;
+}
+
+.typing-textarea textarea:valid ~ span {
+  visibility: visible;
+}
+
+.typing-controls {
+  display: flex;
+}
+
+.typing-controls span {
+  margin-left: 7px;
+  font-size: 1.4rem;
+  background: var(--incoming-chat-bg);
+  outline: 1px solid var(--incoming-chat-border);
+}
+
+.typing-controls span:hover {
+  background: var(--icon-hover-bg);
+}
+
+
+
+.main-nav {
+    background: rgba(0, 0, 0, 0.5) url('/images/stripe.jpg') fixed;
+    background-blend-mode: overlay;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000; /* Ensure the navigation bar is above other content */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Adding shadow */
+    background-size: cover; /* Stretch background image */
+    background-position: center; /* Center background image */
+}
+
+
+.main-nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+.main-nav ul li {
+    display: inline-block;
+    margin: 0 10px;
+}
+
+.main-nav ul li a {
+    position: relative; /* Ensure position context for pseudo-element */
+    color: #fff;
+    text-decoration: none;
+    font-size: 18px;
+    transition: all 0.3s ease; /* Smooth transition for animation */
+}
+
+.main-nav ul li a::after {
+    content: ''; /* Empty content for pseudo-element */
+    position: absolute;
+    bottom: -3px; /* Adjust as needed */
+    left: 0;
+    width: 0;
+    height: 2px; /* Underline height */
+    background-color: #fff; /* Underline color */
+    transition: width 0.3s ease; /* Smooth width transition */
+}
+
+.main-nav ul li a:hover::after {
+    width: 100%; /* Expand width to underline on hover */
+}
+
+
+.suggestions {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+    position: relative;
+    z-index: 1;
+  }
+  
+  .suggestion {
+    background-color: var(--icon-hover-bg);
+    color: var(--text-color);
+    padding: 10px 15px; /* Increased padding for better touch target on mobile */
+    border-radius: 20px;
+    cursor: pointer;
+    margin: 0 5px;
+    transition: background-color 0.3s ease;
+    text-align: center; /* Center text horizontally */
+    white-space: nowrap; /* Prevent text wrapping */
+  }
+  
+  .suggestion:hover {
+    background-color: var(--icon-color);
+    color: var(--incoming-chat-bg);
+  }
+  
+/* For screens up to 630px, show the first 2 suggestions */
+@media screen and (max-width: 630px) {
+    .suggestions .suggestion {
+      display: none; /* Hide all suggestions initially */
+    }
+    .suggestions .suggestion:nth-child(-n+2) {
+      display: block; /* Display the first 2 suggestions */
+    }
+  }
+  
+  
+  /* For screens up to 400px, hide all suggestions */
+  @media screen and (max-width: 450px) {
+    .suggestions {
+      display: none; /* Hide all suggestions */
+    }
+  }
+  
+  
+
+
+
