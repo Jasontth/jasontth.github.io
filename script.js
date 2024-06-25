@@ -2,11 +2,13 @@ const chatInput = document.querySelector("#chat-input");
 const sendButton = document.querySelector("#send-btn");
 const chatContainer = document.querySelector(".chat-container");
 const deleteButton = document.querySelector("#delete-btn");
+const API_URL = "https://api.genai.example.com/v1/chat/completions";
+const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
 
 let userText = "null";
-const GEMINI_API_KEY = "AIzaSyAqBeKkxxHeiW2mi6qltlyBdGdkr8xe5Kk"; // Replace with your new API key
-
 let conversationHistory = [];
+
+
 
 const loadDataFromLocalstorage = () => {
     const defaultText = `
@@ -45,7 +47,7 @@ const getChatResponse = async (incomingChatDiv) => {
             messages: [
                 { 
                     role: "system", 
-                    content: `You are Jason, a social data scientist. Introduce yourself briefly if the user greets you. Encourage users to ask questions about yourself. If asked about your resume, provide information based on the details provided: ${JSON.stringify(resumeDetails)}. Strictly refrain from answering questions outside of your resume details or making up information.` 
+                    content: `Here is the instruction: ${JSON.stringify(instruction_Details)}. If asked about yourself, provide information based on the CV/Resume details provided: ${JSON.stringify(resume_Details)}.` 
                 },                
                 ...conversationHistory,
                 { role: "user", content: userText },
