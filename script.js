@@ -2,8 +2,6 @@ const chatInput = document.querySelector("#chat-input");
 const sendButton = document.querySelector("#send-btn");
 const chatContainer = document.querySelector(".chat-container");
 const deleteButton = document.querySelector("#delete-btn");
-const API_URL = "https://api.genai.example.com/v1/chat/completions";
-const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
 
 let userText = "null";
 let conversationHistory = [];
