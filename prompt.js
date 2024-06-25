@@ -134,5 +134,7 @@ const resumeDetails = {
             "Blockchain Basics (University at Buffalo)"
         ]
     },
+    RoleModel: "My mom",
+    DescribeYourself: ["Hardworking", "Innovative", "Self-motivated"],
     LifeGoals: "Be influential, bring positive changes to the world while minimizing human suffering."
 };
