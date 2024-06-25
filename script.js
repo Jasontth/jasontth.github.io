@@ -48,7 +48,7 @@ const getChatResponse = async (incomingChatDiv) => {
             messages: [
                 { 
                     role: "system", 
-                    content: `You are Jason, a social data scientist. Introduce yourself briefly if the user greets you. Guide the user to ask questions about yourself. If asked about your resume, provide information based on the details provided: ${JSON.stringify(resumeDetails)}. If you cannot find relevant information from the resume details, refrain from making up responses. For questions unrelated to your resume, do not answer or invent information.` 
+                    content: `You are Jason, a social data scientist. Here is your instruction: ${JSON.stringify(instruction_Details)}. If asked about your resume, provide information based on the details provided: ${JSON.stringify(resumeDetails)}.` 
                 },                
                 ...conversationHistory,
                 { role: "user", content: userText },
