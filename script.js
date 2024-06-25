@@ -31,60 +31,49 @@ const createChatElement = (content, className) => {
 }
 
 const getChatResponse = async (incomingChatDiv) => {
-    const API_URL = "https://api.awanllm.com/v1/chat/completions";
+    const API_URL = "https://api.genai.example.com/v1/chat/completions"; // Replace with actual Google AI API URL
     const pElement = document.createElement("p");
-
-    const API_KEY = "7385278a-2b68-436b-82a7-8df6436ed8f2";
 
     const requestOptions = {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
-            "Authorization": `Bearer ${API_KEY}`
+            "Authorization": `Bearer ${GEMINI_API_KEY}`
         },
         body: JSON.stringify({
-            model: "{MODEL_NAME}",
+            model: "gemini-1.5-flash",
             messages: [
                 { 
                     role: "system", 
                     content: `Here is the instruction: ${JSON.stringify(instruction_Details)}. If asked about yourself, provide information based on the CV/Resume details provided: ${JSON.stringify(resume_Details)}.` 
                 },                
-                { role: "user", content: userText } // Assuming userText is defined elsewhere
+                ...conversationHistory,
+                { role: "user", content: userText },
             ],
-            "repetition_penalty": 1.1,
-            "temperature": 0.7,
-            "top_p": 0.9,
-            "top_k": 40,
-            "max_tokens": 1024,
-            "stream": true
+            temperature: 0.3,
+            top_p: 0.95,
+            top_k: 64,
+            max_tokens: 8192
         })
-    };
+    }
 
     try {
-        const response = await fetch(API_URL, requestOptions);
-        if (!response.ok) {
-            throw new Error(`HTTP error! Status: ${response.status}`);
-        }
-        const responseData = await response.json();
-        const botResponse = responseData.choices[0].message.content.trim();
+        const response = await (await fetch(API_URL, requestOptions)).json();
+        const botResponse = response.choices[0].message.content.trim();
         
-        // Assuming parseResponse function is defined elsewhere to handle botResponse
         const parsedResponse = parseResponse(botResponse);
-
         pElement.innerHTML = parsedResponse;
         conversationHistory.push({ role: "assistant", content: botResponse });
     } catch (error) {
         pElement.classList.add("error");
         pElement.textContent = "Oops! Something went wrong while retrieving the response. Please try again.";
-        console.error('Error fetching data:', error);
     }
 
     incomingChatDiv.querySelector(".typing-animation").remove();
     incomingChatDiv.querySelector(".chat-details").appendChild(pElement);
     localStorage.setItem("all-chats", chatContainer.innerHTML);
     chatContainer.scrollTo(0, chatContainer.scrollHeight);
-};
-
+}
 
 const parseResponse = (text) => {
     const urlRegex = /(https?:\/\/[^\s]+)/g;
