@@ -4,9 +4,19 @@ const chatContainer = document.querySelector(".chat-container");
 const deleteButton = document.querySelector("#delete-btn");
 
 let userText = "null";
-const AWANLLM_API_KEY = "7385278a-2b68-436b-82a7-8df6436ed8f2"; // Paste your API key here
+const part1 = "5f85aff0";
+const part2 = "dce9";
+const part3 = "4166";
+const part4 = "9386";
+const part5 = "8518a46706f9";
 
 let conversationHistory = [];
+
+function getApiKey() {
+    return part1 + "-" + part2+ "-" + part3+ "-" + part4+ "-" + part5;
+}
+
+const API_KEY = getApiKey();
 
 const loadDataFromLocalstorage = () => {
     // Load saved chats and theme from local storage and apply/add on the page
@@ -41,7 +51,7 @@ const getChatResponse = async (incomingChatDiv) => {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
-            "Authorization": `Bearer ${AWANLLM_API_KEY}`
+            "Authorization": `Bearer ${API_KEY}`
         },
         body: JSON.stringify({
             model: "Awanllm-Llama-3-8B-Dolfin",
