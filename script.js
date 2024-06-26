@@ -4,7 +4,6 @@ const chatContainer = document.querySelector(".chat-container");
 const deleteButton = document.querySelector("#delete-btn");
 
 let userText = "null";
-const AWANLLM_API_KEY = "7385278a-2b68-436b-82a7-8df6436ed8f2"; // Paste your API key here
 
 let conversationHistory = [];
 
