@@ -63,11 +63,10 @@ const getChatResponse = async (incomingChatDiv) => {
                 ...conversationHistory,
                 { role: "user", content: userText },
             ],
-            repetition_penalty: 1.1,
-            temperature: 0.7,
+            temperature: 0.3,
             top_p: 0.9,
-            top_k: 40,
-            max_tokens: 1024,
+            top_k: 30,
+            max_tokens: 128,
             stream: false
         })
     }
