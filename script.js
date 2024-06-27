@@ -2,40 +2,6 @@ const chatInput = document.querySelector("#chat-input");
 const sendButton = document.querySelector("#send-btn");
 const chatContainer = document.querySelector(".chat-container");
 const deleteButton = document.querySelector("#delete-btn");
-const botBtn = document.getElementById('bot-btn');
-
-document.addEventListener('DOMContentLoaded', (event) => {
-    const botBtn = document.getElementById('bot-btn');
-    const botOptionsContent = document.querySelector('.bot-options-content');
-
-    // Create overlay div
-    const overlay = document.createElement('div');
-    overlay.className = 'bot-options-overlay';
-    document.body.appendChild(overlay);
-
-    // Move options content into overlay
-    overlay.appendChild(botOptionsContent);
-
-    botBtn.addEventListener('click', function(e) {
-        e.stopPropagation();
-        overlay.classList.toggle('show');
-        botOptionsContent.classList.toggle('show');
-    });
-
-    // Close the overlay if the user clicks outside of the options content
-    overlay.addEventListener('click', function(event) {
-        if (event.target === overlay) {
-            overlay.classList.remove('show');
-            botOptionsContent.classList.remove('show');
-        }
-    });
-
-    // Prevent clicks inside the options content from closing the overlay
-    botOptionsContent.addEventListener('click', function(event) {
-        event.stopPropagation();
-    });
-});
-
 
 let userText = "null";
 const part1 = "5f85aff0";
@@ -56,8 +22,9 @@ const loadDataFromLocalstorage = () => {
     // Load saved chats and theme from local storage and apply/add on the page
     const defaultText = `
         <div class="default-text">
-            <h2>This is Jason AI</h2>
-            <h3>Powered by Llama-3-8b</h3>
+            <h1>This is Jason</h1>
+            <h2>Powered by Llama-3-8b</h2>
+            <p>Ask anything about me</p>
             <div class="disclaimer">
                 <p>Important Notice: This AI may occasionally hallucinate; please verify important information via the navigation bar.</p>
             </div>
@@ -236,26 +203,4 @@ const handleSuggestionClick = () => {
   });
 
 
-  var McButton = $("[data=hamburger-menu]");
-var McBar1 = McButton.find("b:nth-child(1)");
-var McBar2 = McButton.find("b:nth-child(2)");
-var McBar3 = McButton.find("b:nth-child(3)");
-
-
-
-McButton.click( function() {
-  $(this).toggleClass("active");
   
-  if (McButton.hasClass("active")) {
-    McBar1.velocity({ top: "50%" }, {duration: 200, easing: "swing"});
-    McBar3.velocity({ top: "50%" }, {duration: 200, easing: "swing"})
-          .velocity({rotateZ:"90deg"}, {duration: 800, delay: 200, easing: [500,20] });
-    McButton.velocity({rotateZ:"135deg"}, {duration: 800, delay: 200, easing: [500,20] });
-  } else {
-    McButton.velocity("reverse");
-    McBar3.velocity({rotateZ:"0deg"}, {duration: 800, easing: [500,20] })
-          .velocity({ top: "100%" }, {duration: 200, easing: "swing"});
-    McBar1.velocity("reverse", {delay: 800});
-  }
-});
-
