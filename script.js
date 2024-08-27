@@ -4,11 +4,11 @@ const chatContainer = document.querySelector(".chat-container");
 const deleteButton = document.querySelector("#delete-btn");
 
 let userText = "null";
-const part1 = "5f85aff0";
-const part2 = "dce9";
-const part3 = "4166";
-const part4 = "9386";
-const part5 = "8518a46706f9";
+const part1 = "1b731615";
+const part2 = "3462";
+const part3 = "4881";
+const part4 = "8a42";
+const part5 = "a8b1880fb708";
 
 let conversationHistory = [];
 
@@ -54,7 +54,7 @@ const getChatResponse = async (incomingChatDiv) => {
             "Authorization": `Bearer ${API_KEY}`
         },
         body: JSON.stringify({
-            model: "Awanllm-Llama-3-8B-Dolfin",
+            model: "Meta-Llama-3.1-8B-Instruct",
             messages: [
                 { 
                     role: "system", 
