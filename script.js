@@ -4,11 +4,11 @@ const chatContainer = document.querySelector(".chat-container");
 const deleteButton = document.querySelector("#delete-btn");
 
 let userText = "null";
-const part1 = "1b731615";
-const part2 = "3462";
-const part3 = "4881";
-const part4 = "8a42";
-const part5 = "a8b1880fb708";
+const part1 = "4907bca4";
+const part2 = "5da5";
+const part3 = "4bfd";
+const part4 = "90eb";
+const part5 = "9cef25a3d10e";
 
 let conversationHistory = [];
 
@@ -43,7 +43,7 @@ const createChatElement = (content, className) => {
 }
 
 const getChatResponse = async (incomingChatDiv) => {
-    const API_URL = "https://api.awanllm.com/v1/chat/completions";
+    const API_URL = "https://api.arliai.com/v1/chat/completions";
     const pElement = document.createElement("p");
 
     // Define the properties and data for the API request
