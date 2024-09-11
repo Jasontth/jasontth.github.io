@@ -24,7 +24,7 @@ const resumeDetails = {
             period: "Sept 2021 – July 2025 (expected)",
             degree: "BSSc in Data Science and Policy Studies",
             gpa: ["Major GPA: 3.73/4.0", "cumulative GPA: 3.67/4.0"],
-            honors: ["Master's List (2022, 2023)", "Dean's List (2023)"]
+            honors: ["Master's List (2022, 2023)", "Dean's List (2023)", "Faculty Scholarship 24-25 (nominated)"]
         },
         {
             institution: "Technical University of Munich, Germany",
