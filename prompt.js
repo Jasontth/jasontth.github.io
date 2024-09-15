@@ -117,6 +117,7 @@ const resumeDetails = {
     ],
     projectsCompetitions: [
         "Application of Foundational Language Models to Climate Change",
+        "Artificial Intelligence Challenge 2024",
         "Open Data Hackathon 2022",
         "College Student Public Administration Data Analysis Contest 2021",
         "National Youth Future Engineer Exhibition and Competition 2019 - 3rd Runner-up",
