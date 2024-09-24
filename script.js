@@ -4,11 +4,11 @@ const chatContainer = document.querySelector(".chat-container");
 const deleteButton = document.querySelector("#delete-btn");
 
 let userText = "null";
-const part1 = "4907bca4";
-const part2 = "5da5";
-const part3 = "4bfd";
-const part4 = "90eb";
-const part5 = "9cef25a3d10e";
+const part1 = "8e27b63e";
+const part2 = "cb3c";
+const part3 = "49a8";
+const part4 = "957b";
+const part5 = "d9ab2c046c63";
 
 let conversationHistory = [];
 
