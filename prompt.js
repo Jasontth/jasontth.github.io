@@ -9,7 +9,7 @@ const instruction_Details = {
 
 const resumeDetails = {
     name: "Jason Tsang",
-    age: 21,
+    age: 22,
     location: "Hong Kong",
     contact: {
         email: "jasontsangtszhin@gmail.com",
@@ -17,66 +17,109 @@ const resumeDetails = {
         github: "https://github.com/Jasontth",
         x: "https://x.com/jasontth_x",
     },
-    summary: "A passionate individual with a strong interest in the intersection of blockchain, AI, and IoT. Enthusiastic about leveraging these technologies to drive innovation and solve real-world challenges.",
+    summary: "A passionate individual with a strong interest in Human-AI communication, blockchain, and climate-focused AI solutions. Enthusiastic about leveraging emerging technologies to drive innovation, solve real-world challenges, and create sustainable impact.",
     education: [
         {
-            institution: "The Chinese University of Hong Kong, Hong Kong (on-going)",
+            institution: "The Chinese University of Hong Kong, Hong Kong",
             period: "Sept 2021 – July 2025 (expected)",
             degree: "BSSc in Data Science and Policy Studies",
-            gpa: ["Major GPA: 3.73/4.0", "cumulative GPA: 3.67/4.0"],
-            honors: ["Master's List (2022, 2023)", "Dean's List (2023)", "Faculty Scholarship 24-25 (nominated)"]
+            gpa: ["GPA: 3.7/4.0"],
+            honors: [
+                "Master's List (2022, 2023)",
+                "Dean's List (2023)",
+                "Social Science Faculty Scholarships 2024-25 (Nominated)",
+                "Straight As in 3rd and 4th Year"
+            ]
         },
         {
             institution: "Technical University of Munich, Germany",
             period: "Apr 2024 – Aug 2024",
             program: "Semester Exchange in Politics & Technology",
-            awards: ["Reaching Out Award (2024)", "Scholarship for Semester Exchange (2024)"]
+            awards: [
+                "Reaching Out Award (2024)",
+                "Scholarship for Semester Exchange (2024)"
+            ],
+            notes: [
+                "Attended master-level courses on Natural Language Processing and Large Language Models",
+                "Achieved Grade: 90%"
+            ]
         }
     ],
     courses: [
         {
-            technical: ["Machine Learning", "Deep Learning", "Natural Language Processing", "Blockchain Technology", "Game Theory"],
-            social_science: ["Policy Science", "Sustainability", "Collab Govern", "Psychology", "Research Methods"]
+            technical: [
+                "Machine Learning for Public Policy",
+                "Natural Language Processing",
+                "AI for Social Good",
+                "Blockchain Technology",
+                "Database Systems",
+                "Social Media Analytics",
+                "Social Network Analysis",
+                "Intro to Java"
+            ],
+            certifications: [
+                "Mathematics for Machine Learning and Data Science Specialization (Coursera)",
+                "Game Theory (Stanford)",
+                "IBM Machine Learning Specialization (IBM)",
+                "Blockchain Basics (University at Buffalo)"
+            ]
         }
     ],
     workExperience: [
         {
-            company: "Climind",
-            period: "Sept 2022 – Sept 2023",
+            company: "CUHK School of Journalism and Communication, Hong Kong",
+            period: "Jan 2025 – Present",
             role: "Research Assistant",
             responsibilities: [
-                "Conducted web scraping of climate change reports",
-                "Worked on NLP projects focused on building a Retrieval Augmented Generation (RAG) system"
+                "Developed Retrieval-Augmented Generation pipelines integrating academic datasets and Wikipedia",
+                "Built user-centric applications to query a vector database for insights on social movements"
             ]
         },
         {
-            company: "The Chinese University of Hong Kong, Hong Kong",
-            period: "Sept 2022 – Sept 2023",
-            role: "Research Assistant (Part-Time)",
+            company: "CUHK JC School of Public Health and Primary Care, Hong Kong",
+            period: "Sept 2024 – Present",
+            role: "Research Assistant",
             responsibilities: [
-                "Analyzed the emigration trend in Hong Kong using both quantitative and qualitative research methods",
-                "Performed web scraping and data mining on social media platforms using Python"
+                "Developed a vaccination chatbot using GPT-4o with Retrieval-Augmented Generation",
+                "Deployed the web app on Microsoft Azure Service to provide accurate vaccination information",
+                "Achieved a 3.9/4.0 on 3C metrics (Correct, Clear, Concise) from independent experts"
+            ]
+        },
+        {
+            company: "CityU Department of Social and Behavioural Sciences, Hong Kong",
+            period: "Sept 2024 – Present",
+            role: "Research Assistant",
+            responsibilities: [
+                "Developed an AI-driven social worker chatbot using GPT-4o with Retrieval-Augmented Generation",
+                "Deployed the chatbot on a web application to promote self-directed learning for social work students"
+            ]
+        },
+        {
+            company: "Climind, Hong Kong",
+            period: "Sept 2023 – Present",
+            role: "Research Assistant",
+            responsibilities: [
+                "Developed and fine-tuned Large Language Models (LLMs) tailored for climate change",
+                "Built a comprehensive Climate Change database with intergovernmental reports and ESG data"
             ]
         },
         {
             company: "Laboratory for AI-Powered Financial Technologies Limited, Hong Kong",
             period: "June 2023 – Aug 2023",
-            role: "Data Science Summer Intern",
+            role: "Data Science Intern",
             responsibilities: [
-                "Assisted in data cleaning and pre-processing of financial data",
-                "Participated in data scraping projects",
-                "Developed systems for on-chain data analysis",
-                "Deployed machine learning models"
+                "Cleaned and pre-processed financial data for modeling tasks",
+                "Developed systems like Bitcoin Whale Alert and Exchange NetFlow for on-chain data analysis",
+                "Built machine learning models (e.g., KNN, Decision Tree) to identify transaction patterns"
             ]
         },
         {
             company: "GreenSafety Technology Limited, Hong Kong",
             period: "Nov 2022 – Feb 2023",
-            role: "STEM Intern",
+            role: "Intern",
             responsibilities: [
                 "Analyzed driving safety and energy consumption patterns",
-                "Led data validation efforts",
-                "Contributed to the development of transportation safety solutions"
+                "Validated data using vehicle video databases to identify unsafe driving practices"
             ]
         },
         {
@@ -84,18 +127,17 @@ const resumeDetails = {
             period: "Aug 2022 – Sept 2022",
             role: "Research Intern",
             responsibilities: [
-                "Prepared reports on international relations research",
-                "Conducted research on AI and 5G technology"
+                "Researched AI and 5G technology and their implications for international cooperation",
+                "Prepared detailed research reports on technological trends"
             ]
         },
         {
             company: "NEOMA, Hong Kong",
             period: "June 2022 – Aug 2022",
-            role: "Summer Intern (AI IoT app)",
+            role: "AI and IoT Intern",
             responsibilities: [
-                "Configured and tested data touchpoints and sensors for major projects",
-                "Collaborated on integrating data touchpoints with AI and IoT systems",
-                "Conducted quality assurance"
+                "Set up and validated 500+ data touchpoints and sensors for FIFA World Cup Qatar 2022",
+                "Integrated AI and IoT systems for real-time data aggregation and analysis"
             ]
         }
     ],
@@ -103,40 +145,58 @@ const resumeDetails = {
         {
             title: "Fine-Tuning Pre-Trained Transformers for Climate Claim Verification",
             link: "http://dx.doi.org/10.13140/RG.2.2.35652.03200",
-            abstract: "Misinformation and disinformation on the internet present a significant challenge in the context of climate change debate. The dissemination of false or misleading information can hinder public understanding and impede efforts to combat the growing issue of climate change. While social media platforms have implemented automatic fact-checking algorithms, existing models lack domain-specific training to effectively verify climate change-related information. As a remedy, a new fact-checking dataset is proposed that combines data from CLIMATE-FEVER with web-scraped information, resulting in a comprehensive dataset comprising 8,115 annotated claim-evidence pairs. The improved dataset is used to fine-tune a variety of pre-trained transformers for climate claim verification tasks. The best model, RoBERTa, achieved an accuracy of 0.7288 and F1-score of 0.7229, improving upon previously reported state-of-the-art (SoTA) F1-score of 0.7182.",
-            video: "https://www.youtube.com/watch?v=sERNbgyJIZk"
+            abstract: "Proposed a new fact-checking dataset integrating CLIMATE-FEVER with web data, achieving state-of-the-art F1-scores using RoBERTa. Released the dataset and models for public use on Hugging Face."
         },
         {
-            title: "Machine Learning Approaches for Bitcoin Address Classification: A Comprehensive Review and Dataset",
-            abstract: "The recent crises and bubble bursts in the crypto market, such as the Terra incident and the collapse of FTX, have raised concerns among government entities and investors. To increase transparency and monitor on-chain activities, reliable methods are needed to identify illegal transactions. Machine learning techniques can serve as valuable tools for classifying addresses and detecting illicit on-chain activities. This paper focuses on Bitcoin, the most popular cryptocurrency, and aims to provide a comprehensive review of the feasibility of using machine learning classification methods for labeling Bitcoin addresses. Additionally, we present a publicly available dataset for address labeling by scraping data from Blockchain.com. The dataset includes 15,355 labeled Bitcoin addresses, as well as labels for Tokens, ETH, and BCH addresses. These resources are made available on GitHub (https://github.com/Jasontth/crypto_label) to facilitate research and enable the training of classification models in this domain."
+            title: "Machine Learning Approaches for Bitcoin Address Classification",
+            link: "https://github.com/Jasontth/crypto_label",
+            abstract: "Developed a dataset of 15,355 labeled Bitcoin addresses and demonstrated machine learning methods for detecting illicit crypto transactions."
         },
         {
             title: "Artificial Intelligence in Plant Pathology",
-            abstract: "This paper presents a prototype application for plant disease identification using Convolutional Neural Networks (CNNs). The goal is to leverage AI techniques to accurately and efficiently identify plant diseases. The application utilizes a dataset of plant images and employs CNNs for feature extraction and disease classification. Experimental results demonstrate the effectiveness of the prototype in achieving high accuracy. The integration of AI and plant pathology has the potential to revolutionize disease management practices in agriculture."
+            abstract: "Leveraged Convolutional Neural Networks (CNNs) for plant disease identification, showcasing the potential of AI in agricultural disease management."
         }
     ],
     projectsCompetitions: [
-        "Application of Foundational Language Models to Climate Change",
-        "Artificial Intelligence Challenge 2024",
+        "AI Challenge 2024",
         "Open Data Hackathon 2022",
         "College Student Public Administration Data Analysis Contest 2021",
-        "National Youth Future Engineer Exhibition and Competition 2019 - 3rd Runner-up",
-        "The First Future Engineer Grand Challenge 2019 - 1st Runner-up"
+        "National Youth Future Engineer Competition 2019 - 3rd Runner-up",
+        "Future Engineer Grand Challenge 2019 - 1st Runner-up"
     ],
-    interest: ["Blockchain", "AI", "IoT", "Data Science", "Machine Learning", "Deep Learning", "NLP", "International Relations", "Public Policy", "Sustainable Development", "Climate Change"],
-    hobbies: ["Reading about politics, science", "Coding in Python", "Traveling", "Listening to podcasts from Lex Fridman", "Watch Youtube", "Hit the gym", "occasionally play CS2"],
+    interests: [
+        "Human-AI Communication",
+        "Blockchain",
+        "AI",
+        "IoT",
+        "Data Science",
+        "Climate Change",
+        "Machine Learning",
+        "Public Policy",
+        "Sustainable Development"
+    ],
+    hobbies: [
+        "Reading about politics, science",
+        "Coding in Python",
+        "Traveling",
+        "Listening to Lex Fridman podcasts",
+        "Watching YouTube",
+        "Gym workouts",
+        "Playing CS2 occasionally"
+    ],
     technicalSkills: {
-        technical: ["Advanced in R, SQL, Linux, HTML/CSS", "Proficient in Python"],
+        technical: [
+            "Proficient in Python, R, SQL, Linux, HTML/CSS",
+            "Experienced in NLP, Machine Learning, and Retrieval-Augmented Generation"
+        ],
         languages: ["Fluent in English, Cantonese, Chinese"],
-        onlineCourses: [
+        certifications: [
             "Mathematics for Machine Learning and Data Science Specialization (Coursera)",
             "Game Theory (Stanford)",
             "IBM Machine Learning Specialization (IBM)",
-            "Machine Learning A-Z (Udemy)",
             "Blockchain Basics (University at Buffalo)"
         ]
     },
-    RoleModel: "My mom",
-    DescribeYourself: ["Hardworking", "Innovative", "Self-motivated"],
-    LifeGoals: "Be influential, bring positive changes to the world while minimizing human suffering."
+    describeYourself: ["Hardworking", "Innovative", "Self-motivated"],
+    lifeGoals: "Be influential, drive positive change, and minimize human suffering through technology and innovation."
 };
