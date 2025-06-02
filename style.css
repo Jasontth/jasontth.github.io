@@ -39,6 +39,10 @@ button {
   cursor: pointer;
   outline: inherit;
   z-index: 10;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+  width: 100%;
+  min-height: 44px; /* recommended minimum for touch targets */
 }
 
 .clearfix::after {
@@ -77,6 +81,10 @@ button {
   box-shadow: 0;
   transition: transform .4s ease,
               box-shadow .4s ease;
+  /* Ensure card fills button and is fully clickable */
+  width: 100%;
+  height: 100%;
+  pointer-events: auto;
 }
 
 .card:hover {
@@ -149,5 +157,5 @@ p {
 }
 
 body {
-  padding-top: 35vh;
+  padding-top: 32vh;
 }
