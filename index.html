@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Jason's Business Card</title>
+  <title>/JasonTsang/</title>
   <link rel="icon" href="icon.png">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <button class="card" tabindex="0">
+  <button class="card" tabindex="0" id="businessCard">
     <div class="row clearfix">
-      <div class="left med">+852 6220-3877</div>
+      <div class="left"><img src="logo.png" alt="AAHK" class="logo"></div>
       <div class="right"><p><span class="med">A</span>irport <span class="med">A</span>uthority</p><p><span class="med">H</span>ong <span class="med">K</span>ong</p></div>
     </div>
     <div class="row">
@@ -22,5 +22,19 @@
       </p>
     </div>
   </button>
+  <script>
+    const card = document.getElementById('businessCard');
+    card.addEventListener('keyup', function(e) {
+      if (e.code === 'Space' || e.key === ' ' || e.keyCode === 32) {
+        card.blur();
+      }
+    });
+    // Optional: blur on click outside
+    document.addEventListener('mousedown', function(e) {
+      if (!card.contains(e.target)) {
+        card.blur();
+      }
+    });
+  </script>
 </body>
 </html>

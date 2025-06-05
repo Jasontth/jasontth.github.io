@@ -153,3 +153,8 @@ p {
 body {
   padding-top: 32vh;
 }
+
+.logo {
+  padding-left: 15px;
+  height: 2.5em;
+}
