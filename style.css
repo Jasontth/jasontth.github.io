@@ -151,7 +151,11 @@ p {
 }
 
 body {
-  padding-top: 32vh;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 0;
 }
 
 .logo {
