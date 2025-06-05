@@ -1,9 +1,13 @@
-/*
-  Hover and click on the card for animations!
-*/
+/**
+ * Jason Tsang's Business Card Website Styles
+ * Interactive 3D business card with hover and focus animations
+ * Hover and click on the card for animations!
+ */
 
+/* ===== IMPORTS ===== */
 @import url(https://fonts.googleapis.com/css?family=Cormorant+Garamond);
 
+/* ===== GLOBAL RESET & BASE STYLES ===== */
 *,
 *::before,
 *::after {
@@ -11,42 +15,57 @@
 }
 
 html {
+  /* Typography */
   font-family: "Cormorant Garamond", serif;
-  text-transform: uppercase;
-  box-sizing: inherit;
   font-size: 10.5px;
   letter-spacing: 1px;
-  text-shadow: 0 0 2px rgba(0, 0, 0, .5),
-                -1px -1px 1px rgba(179, 179, 179, .5),
-                1px 1px 0 rgba(255, 255, 255, 0.55),
-                0 1px 3px white;
-  overflow: hidden;
+  text-transform: uppercase;
   color: #191919;
+  
+  /* Text styling effects */
+  text-shadow: 
+    0 0 2px rgba(0, 0, 0, .5),
+    -1px -1px 1px rgba(179, 179, 179, .5),
+    1px 1px 0 rgba(255, 255, 255, 0.55),
+    0 1px 3px white;
+  
+  /* Layout */
+  box-sizing: inherit;
+  overflow: hidden;
   background-color: rgb(255, 255, 255);
 }
 
+/* ===== BUTTON RESET ===== */
 button {
+  /* Reset default button styles */
   display: block;
   position: relative;
   background: none;
-  color: inherit;
   border: none;
   padding: 0;
+  outline: inherit;
+  
+  /* Inherit text styles from parent */
+  color: inherit;
   font: inherit;
   text-transform: inherit;
   letter-spacing: inherit;
   text-shadow: inherit;
+  
+  /* Interactive styles */
   cursor: pointer;
-  outline: inherit;
   z-index: 20;
 }
 
+/* ===== UTILITY CLASSES ===== */
+/* Clear floats */
 .clearfix::after {
-    content: "";
-    clear: both;
-    display: table;
+  content: "";
+  clear: both;
+  display: table;
 }
 
+/* Typography size variations */
 .big {
   font-size: 150%;
 }
@@ -65,32 +84,43 @@ button {
   letter-spacing: 0px;
 }
 
+/* ===== BUSINESS CARD COMPONENT ===== */
 .card {
-  background-color: #f4f1eb;
-  background-image: url("https://www.transparenttextures.com/patterns/paper-fibers.png");
+  /* Dimensions and positioning */
   height: 200px;
   width: 350px;
   margin: 0 auto;
   padding: 20px 10px 10px 10px;
-  transform: rotateX(60deg) rotateY(0deg) rotateZ(45deg);
-  /*transform-origin: 50% 100%;*/
-  box-shadow: 0;
-  transition: transform .4s ease,
-              box-shadow .4s ease;
   position: relative;
+  
+  /* Visual styling */
+  background-color: #f4f1eb;
+  background-image: url("https://www.transparenttextures.com/patterns/paper-fibers.png");
+  
+  /* 3D transformation - initial rotated state */
+  transform: rotateX(60deg) rotateY(0deg) rotateZ(45deg);
+  
+  /* Shadow and animation */
+  box-shadow: 0;
+  transition: 
+    transform .4s ease,
+    box-shadow .4s ease;
 }
 
+/* Card hover state - slight elevation */
 .card:hover {
   cursor: pointer;
   transform: rotateX(60deg) rotateY(0deg) rotateZ(45deg) translateZ(10px);
   box-shadow: 20px 20px 20px rgba(0, 0, 0, .4);
 }
 
+/* Card focus state - flat/readable view */
 .card:focus {
   transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg) translateZ(10px);
   box-shadow: 0px 10px 10px rgba(0, 0, 0, .4);
 }
 
+/* Hide 3D edges when card is focused (flat view) */
 .card:focus::before {
   transform: skewX(0deg) translateX(0px) translateY(0px);
   height: 0px;
@@ -101,18 +131,23 @@ button {
   width: 0px;
 }
 
+/* ===== 3D CARD EDGES (PSEUDO-ELEMENTS) ===== */
 .card::before,
 .card::after {
   content: "";
   position: absolute;
   display: block;
   background-color: grey;
-  transition: transform .4s ease,
-              height .4s ease,
-              width .4s ease;
-  pointer-events: none;
+  pointer-events: none; /* Don't interfere with card interactions */
+  
+  /* Smooth transitions for 3D effects */
+  transition: 
+    transform .4s ease,
+    height .4s ease,
+    width .4s ease;
 }
 
+/* Bottom edge of the card (3D depth effect) */
 .card::before {
   width: 100%;
   height: 6px;
@@ -121,6 +156,7 @@ button {
   transform: skewX(45deg) translateX(-3px) translateY(6px);
 }
 
+/* Right edge of the card (3D depth effect) */
 .card::after {
   height: 100%;
   width: 6px;
@@ -129,15 +165,18 @@ button {
   transform: skewY(45deg) translateX(6px) translateY(-3px);
 }
 
+/* ===== CARD CONTENT LAYOUT ===== */
 .row {
   display: block;
   text-align: center;
 }
 
+/* Add extra spacing around the name section */
 .row:nth-child(2) {
   margin: 35px 0 50px 0;
 }
 
+/* Float utilities for logo/company header */
 .left {
   float: left;
 }
@@ -146,11 +185,14 @@ button {
   float: right;
 }
 
+/* Reset paragraph margins */
 p {
   margin: 0;
 }
 
+/* ===== PAGE LAYOUT ===== */
 body {
+  /* Center the card on the page */
   min-height: 100vh;
   display: flex;
   justify-content: center;
@@ -158,6 +200,7 @@ body {
   padding-top: 0;
 }
 
+/* ===== LOGO STYLING ===== */
 .logo {
   padding-left: 15px;
   height: 2.5em;
