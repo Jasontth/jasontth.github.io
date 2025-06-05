@@ -204,4 +204,9 @@ body {
 .logo {
   padding-left: 15px;
   height: 2.5em;
+  /* Add same shadow as text */
+  filter: drop-shadow(0 0 2px rgba(0, 0, 0, .5))
+          drop-shadow(-1px -1px 1px rgba(179, 179, 179, .5))
+          drop-shadow(1px 1px 0 rgba(255, 255, 255, 0.55))
+          drop-shadow(0 1px 3px white);
 }
