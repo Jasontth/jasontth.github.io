@@ -85,15 +85,22 @@ function formatDuration(sec: number | null): string | null {
 }
 
 // Simple client-side queue: spaces out outgoing requests so a burst of new
-// cards doesn't trigger upstream rate-limiting.
+// cards doesn't trigger upstream rate-limiting. Each request waits a randomized
+// delay (base + jitter) after the previous one, so requests never fire in a
+// tight, predictable rhythm that looks like a bot to the upstream.
 let queueTail: Promise<void> = Promise.resolve()
-const REQUEST_SPACING_MS = 180
+const REQUEST_BASE_MS = 600
+const REQUEST_JITTER_MS = 900
+
+function randomSpacing() {
+  return REQUEST_BASE_MS + Math.floor(Math.random() * REQUEST_JITTER_MS)
+}
 
 function enqueueFetch(url: string, signal: AbortSignal) {
   const wait = queueTail.then(
     () =>
       new Promise<void>((resolve) => {
-        const t = setTimeout(resolve, REQUEST_SPACING_MS)
+        const t = setTimeout(resolve, randomSpacing())
         signal.addEventListener("abort", () => {
           clearTimeout(t)
           resolve()

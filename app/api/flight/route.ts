@@ -284,7 +284,7 @@ async function fetchUpstreamText(url: string): Promise<{ status: number; text: s
 
 async function fetchFromUpstream(
   flight: string,
-  retries = 1,
+  retries = 2,
 ): Promise<{
   leg: FlightLeg | null
   status: number
@@ -293,7 +293,11 @@ async function fetchFromUpstream(
   const { status, text } = await fetchUpstreamText(url)
 
   if (status === 429 && retries > 0) {
-    await new Promise((r) => setTimeout(r, 800 + Math.random() * 600))
+    // Exponential backoff with random jitter so retries don't hammer the
+    // upstream in lockstep across many concurrent cards.
+    const attempt = 2 - retries // 0 on first retry, 1 on second
+    const base = 1000 * Math.pow(2, attempt) // 1s, then 2s
+    await new Promise((r) => setTimeout(r, base + Math.random() * 1000))
     return fetchFromUpstream(flight, retries - 1)
   }
 
