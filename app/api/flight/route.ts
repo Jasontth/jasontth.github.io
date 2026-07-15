@@ -1,7 +1,57 @@
 import { NextResponse } from "next/server"
+import { spawn } from "node:child_process"
 
 export const runtime = "nodejs"
 export const dynamic = "force-dynamic"
+
+const BROWSER_UA =
+  "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"
+
+// Flightradar24 blocks Node's fetch (undici) via TLS/HTTP fingerprinting, so a
+// plain fetch reliably returns 403 even with perfect browser headers. curl uses
+// a different fingerprint that the upstream accepts, so we fall back to it.
+function curlFetch(url: string, timeoutMs = 9000): Promise<{ status: number; text: string }> {
+  return new Promise((resolve, reject) => {
+    const args = [
+      "-sS",
+      "-m",
+      String(Math.ceil(timeoutMs / 1000)),
+      "--compressed",
+      "-w",
+      "\n%{http_code}",
+      "-A",
+      BROWSER_UA,
+      "-H",
+      "Accept: application/json,text/plain,*/*",
+      "-H",
+      "Accept-Language: en-US,en;q=0.9",
+      "-H",
+      "Referer: https://www.flightradar24.com/",
+      url,
+    ]
+    const child = spawn("curl", args)
+    let out = ""
+    let err = ""
+    const killTimer = setTimeout(() => child.kill("SIGKILL"), timeoutMs + 1500)
+    child.stdout.on("data", (d) => (out += d))
+    child.stderr.on("data", (d) => (err += d))
+    child.on("error", (e) => {
+      clearTimeout(killTimer)
+      reject(e)
+    })
+    child.on("close", (code) => {
+      clearTimeout(killTimer)
+      if (code !== 0) {
+        reject(new Error(err || `curl exited with code ${code}`))
+        return
+      }
+      const nl = out.lastIndexOf("\n")
+      const status = Number.parseInt(out.slice(nl + 1).trim(), 10) || 0
+      const body = nl >= 0 ? out.slice(0, nl) : out
+      resolve({ status, text: body })
+    })
+  })
+}
 
 type AirportNode = {
   name?: string | null
@@ -207,32 +257,55 @@ const inflight = new Map<string, Promise<FlightLeg | null>>()
 
 const UPSTREAM = "https://api.flightradar24.com/common/v1/flight/list.json"
 
-async function fetchFromUpstream(flight: string, retries = 1): Promise<{
+// Fetch the raw upstream body. Try native fetch first (fast path); if the
+// upstream fingerprint-blocks it (403) or the request errors, retry via curl.
+async function fetchUpstreamText(url: string): Promise<{ status: number; text: string }> {
+  try {
+    const res = await fetch(url, {
+      headers: {
+        "User-Agent": BROWSER_UA,
+        Accept: "application/json,text/plain,*/*",
+        "Accept-Language": "en-US,en;q=0.9",
+        Referer: "https://www.flightradar24.com/",
+      },
+      signal: AbortSignal.timeout(9000),
+      cache: "no-store",
+    })
+    if (res.status === 403 || res.status === 429) {
+      // Fingerprint / rate block — try curl instead.
+      return await curlFetch(url)
+    }
+    return { status: res.status, text: await res.text() }
+  } catch {
+    // Network error or undici rejection — fall back to curl.
+    return await curlFetch(url)
+  }
+}
+
+async function fetchFromUpstream(
+  flight: string,
+  retries = 1,
+): Promise<{
   leg: FlightLeg | null
   status: number
 }> {
   const url = `${UPSTREAM}?query=${encodeURIComponent(flight)}&fetchBy=flight&page=1&limit=10`
-  const res = await fetch(url, {
-    headers: {
-      "User-Agent":
-        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36",
-      Accept: "application/json,text/plain,*/*",
-      "Accept-Language": "en-US,en;q=0.9",
-      Referer: "https://www.flightradar24.com/",
-      Origin: "https://www.flightradar24.com",
-    },
-    signal: AbortSignal.timeout(9000),
-    cache: "no-store",
-  })
+  const { status, text } = await fetchUpstreamText(url)
 
-  if (res.status === 429 && retries > 0) {
+  if (status === 429 && retries > 0) {
     await new Promise((r) => setTimeout(r, 800 + Math.random() * 600))
     return fetchFromUpstream(flight, retries - 1)
   }
 
-  if (!res.ok) return { leg: null, status: res.status }
+  if (status < 200 || status >= 300) return { leg: null, status }
 
-  const json = (await res.json()) as { result?: { response?: { data?: Fr24Item[] } } }
+  let json: { result?: { response?: { data?: Fr24Item[] } } }
+  try {
+    json = JSON.parse(text)
+  } catch {
+    return { leg: null, status: 502 }
+  }
+
   const items = json.result?.response?.data ?? []
   if (!items.length) return { leg: null, status: 404 }
 
