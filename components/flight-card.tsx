@@ -89,8 +89,8 @@ function formatDuration(sec: number | null): string | null {
 // delay (base + jitter) after the previous one, so requests never fire in a
 // tight, predictable rhythm that looks like a bot to the upstream.
 let queueTail: Promise<void> = Promise.resolve()
-const REQUEST_BASE_MS = 600
-const REQUEST_JITTER_MS = 900
+const REQUEST_BASE_MS = 150
+const REQUEST_JITTER_MS = 300
 
 function randomSpacing() {
   return REQUEST_BASE_MS + Math.floor(Math.random() * REQUEST_JITTER_MS)
